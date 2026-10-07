@@ -18,3 +18,7 @@ Three-layer pinned home, pinned wardrobe changes with masks, word lighting, para
 ## Assets and remaining handover
 Original 9 fashion photos and logo. Prices/sizes not invented. WhatsApp5535998290565, IGdolce_lookk. Favorites local.
 Higgsfield movie generation is blocked by Plus plan requirement; no generated video is included. GitHub source repository: https://github.com/michaeldouggmarketing-glitch/dolce-look-by-josy. Existing Vercel project is preserved during Git integration. Authenticated Admin workflow must be completed with owner before client handover.
+
+## Opening video
+
+The supplied eight-second red-look video is served as a 540 × 720 H.264 MP4, 408,488 bytes, without audio or the source black bars. Only the central opening portrait loads it, on intersection. Playback stops offscreen, in hidden tabs or when paused. Reduced motion, data saving, blocked autoplay and media errors retain the original photograph. The existing inventory feed controls which piece appears; media is matched to its original product ID and image. Other supplied photographs remain still pending approved videos.
