@@ -21,4 +21,8 @@ Higgsfield movie generation is blocked by Plus plan requirement; no generated vi
 
 ## Opening video
 
-The supplied eight-second red-look video is served as a 540 × 720 H.264 MP4, 408,488 bytes, without audio or the source black bars. Only the central opening portrait loads it, on intersection. Playback stops offscreen, in hidden tabs or when paused. Reduced motion, data saving, blocked autoplay and media errors retain the original photograph. The existing inventory feed controls which piece appears; media is matched to its original product ID and image. Other supplied photographs remain still pending approved videos.
+The supplied eight-second red-look video is served as a 540 × 720 H.264 MP4, 408,488 bytes, without audio or the source black bars. Only the central opening portrait loads it, on intersection. Playback stops offscreen, in hidden tabs. Reduced motion, data saving, blocked autoplay and media errors retain the original photograph. The existing inventory feed controls which piece appears; media is matched to its original product ID and image. Other supplied photographs remain still pending approved videos.
+
+## Owner-controlled optional motion
+
+`src/motion-settings.ts` contains `EXTRA_LOOK_VIDEOS_ENABLED`, currently false. This controls all optional look videos across photo sections, catalogue cards, editorial images and product detail pages. The center home portrait uses `alwaysAnimate` independently of the optional setting and has no pause button. There is no switch in the Admin or public site and no subscription price or upsell copy in the product. To activate on the owner's chat request, register approved optimized video assets, change the flag to true and publish. To deactivate, set it to false and publish. A still photograph remains wherever a reviewed video has not yet been supplied. Reduced motion and data-saving remain supported.

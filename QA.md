@@ -11,3 +11,10 @@ Vercel production READY dpl_61hPJwqyNz624c8PiHaMwWJvmTU4. HTTP route/public bund
 - Reduced-motion and data-saving contexts requested no MP4 and retained the original photo. Failed media retained the photo. No page errors.
 - Deterministic public-feed test removed the sold look without reload and removed its video, replacing the center portrait with the next available piece. This test used a local public-feed fixture, not an authenticated Admin session.
 - Separate live database transaction verified the existing owner's admin membership, sold/available stock normalization, stale-version rejection and restoration; the transaction was rolled back. Full authenticated Admin UI testing remains pending.
+
+## Internal motion control — 2026-10-07
+
+- Removed the visitor pause control at the owner's explicit request. Home center motion is independent of optional motion; offscreen/hidden-tab pause and accessibility/data-saving fallbacks remain.
+- Extra videos disabled: desktop/mobile rendered exactly one home video; photo fallbacks and inventory removal passed with no page errors.
+- Extra videos enabled in a temporary local build: supplied look-1 video played in its product details and catalogue card on intersection. No video was registered for unsupplied assets.
+- Optional setting restored to false for production. There is no Admin switch, public subscription offer or billing change.
