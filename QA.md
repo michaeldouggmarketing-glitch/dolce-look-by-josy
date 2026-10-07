@@ -18,3 +18,9 @@ Vercel production READY dpl_61hPJwqyNz624c8PiHaMwWJvmTU4. HTTP route/public bund
 - Extra videos disabled: desktop/mobile rendered exactly one home video; photo fallbacks and inventory removal passed with no page errors.
 - Extra videos enabled in a temporary local build: supplied look-1 video played in its product details and catalogue card on intersection. No video was registered for unsupplied assets.
 - Optional setting restored to false for production. There is no Admin switch, public subscription offer or billing change.
+
+## Universe section videos — 2026-10-07
+
+- Explicitly enabled only the two portraits in the requested “Mais que vestir” section; general optional motion remains off. White look-5 MP4 is 253,075 bytes and brown look-9 MP4 is 366,074 bytes. Both are 540 × 960 H.264, silent, faststart, preserving the supplied durations.
+- Desktop and mobile verified both actual video decoders playing muted loops on intersection, pausing offscreen, no extra catalogue videos, no horizontal overflow and zero page errors. Existing photo fallback and reduced-motion/data-saving behavior reused.
+- `UNIVERSE_LOOK_VIDEOS_ENABLED` is an internal section setting, currently true. Set it false along with the general flag when the owner asks to disable optional image videos; the first home portrait remains independent.
