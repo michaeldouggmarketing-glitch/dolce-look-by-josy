@@ -1,0 +1,1 @@
+{"rewrites":[{"source":"/admin/:path*","destination":"/index.html"},{"source":"/colecao","destination":"/index.html"},{"source":"/a-marca","destination":"/index.html"},{"source":"/atendimento","destination":"/index.html"},{"source":"/favoritos","destination":"/index.html"},{"source":"/look/:id","destination":"/index.html"}]}

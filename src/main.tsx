@@ -1,0 +1,10 @@
+import React,{Suspense,lazy} from 'react';
+import{createRoot}from'react-dom/client';
+import '@fontsource/italiana/latin-400.css';
+import '@fontsource/dm-sans/latin-400.css';
+import '@fontsource/dm-sans/latin-500.css';
+import '@fontsource/dm-sans/latin-600.css';
+import './style.css';
+const Storefront=lazy(()=>import('./Storefront'));
+const Admin=lazy(()=>import('./Admin').then(m=>({default:m.Admin})));
+createRoot(document.getElementById('root')!).render(<React.StrictMode><Suspense fallback={<div className="boot">Dolce Look <span>by Josy</span></div>}>{location.pathname.startsWith('/admin')?<Admin/>:<Storefront/>}</Suspense></React.StrictMode>);
