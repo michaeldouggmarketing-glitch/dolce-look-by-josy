@@ -2,3 +2,40 @@
 @media(max-width:760px){.magazine-instructions{font-size:10px;line-height:1.6;display:block;padding-bottom:16px}.magazine-instructions>span:last-child{display:block;margin-top:5px;color:#666666}.magazine-spread{min-height:530px}.magazine-page{padding:12px 12px 35px}.magazine-photo{height:245px}.magazine-save{width:36px;height:36px;top:6px;right:6px}.magazine-save svg{width:19px}.magazine-piece{padding-top:14px}.magazine-piece h3{font-size:25px;line-height:1.1;min-height:3.3em}.site .magazine-piece>p{font-size:8px!important;letter-spacing:.05em}.magazine-size{font-size:9px;gap:7px;flex-wrap:wrap;min-height:58px;margin-top:4px}.magazine-size button{font-size:11px;min-width:40px}.magazine-consult{font-size:9px}.magazine-request{font-size:10px;line-height:1.5;padding-top:10px}.magazine-request svg{width:16px}.magazine-folio{left:12px;right:12px;font-size:8px}.magazine-folio>span{font-size:11px}.magazine-navigation{gap:12px;padding-top:18px}.magazine-navigation button,.magazine-navigation>span{font-size:10px}.magazine-navigation button{gap:7px}.magazine-spine{width:14px}.magazine-end{padding:14px}.magazine-end>span{font-size:clamp(45px,12vw,68px)}.magazine-end>a{font-size:9px;gap:8px}}
 @media(max-width:360px){.magazine-photo{height:218px}.magazine-piece h3{font-size:22px}.magazine-page{padding-inline:9px}}
 @media(prefers-reduced-motion:reduce){.magazine-turn{display:none}.magazine-content{transform:none;transition:none}}
+
+/* Atelier edition: generous photography, paper edge, tactile page turn. */
+.magazine-atelier{max-width:1100px}
+.magazine-masthead{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:0 0 22px;border-bottom:1px solid #bba38b;margin-bottom:20px}
+.magazine-masthead>span{font:clamp(38px,5vw,64px)/1 Italiana,serif;letter-spacing:-.035em}
+.magazine-masthead em{font-style:normal;color:#842133}
+.site .magazine-masthead p{font-size:12px!important;color:#632333}
+.magazine-atelier .magazine-book{border:0;background:#f3eee6;box-shadow:0 22px 38px #10101020,3px 3px 0 #e1d4c6,6px 6px 0 #f3eee6,9px 9px 0 #d1c3b5;cursor:grab;perspective:1600px}
+.magazine-atelier .magazine-book:active{cursor:grabbing}
+.magazine-atelier .magazine-page{padding:24px 26px 42px}
+.magazine-atelier .magazine-photo{height:480px}
+.magazine-atelier .magazine-piece h3{min-height:0;font-size:38px}
+.magazine-atelier .magazine-request{background:#842133;color:#f3eee6;padding:15px 18px;border:0;margin-top:12px}
+.magazine-atelier .magazine-request:hover{background:#101010}
+.magazine-atelier .magazine-content{transition:transform .06s linear}
+.magazine-atelier .magazine-turn{animation-duration:.44s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
+.magazine-atelier .magazine-turn:after{background:linear-gradient(90deg,#10101005 45%,#10101030 80%,#f3eee6bb 94%,#10101035);width:100%;box-shadow:16px 8px 22px #10101028}
+.magazine-fold{position:absolute;right:0;top:0;bottom:0;width:var(--fold-width,0px);background:linear-gradient(90deg,#10101025,#f3eee6 60%,#e0cfbb);box-shadow:-8px 2px 18px #10101025;pointer-events:none;z-index:6}
+.magazine-fold.fold-left{right:auto;left:0;transform:scaleX(-1)}
+.magazine-atelier .magazine-navigation button{border-bottom:1px solid #bba38b;padding:10px 0;font-size:12px}
+.magazine-atelier .magazine-navigation>span{font-size:12px}
+@media(max-width:760px){
+ .magazine-masthead{padding-bottom:16px;gap:12px}.magazine-masthead>span{font-size:42px}.site .magazine-masthead p{font-size:10px!important;max-width:110px;line-height:1.5}
+ .single-page .magazine-spread{grid-template-columns:minmax(0,1fr);min-height:0}
+ .magazine-atelier .magazine-page{padding:15px 15px 36px}
+ .magazine-atelier .magazine-photo{height:clamp(330px,53svh,480px)}
+ .magazine-atelier .magazine-piece{padding-top:16px}.magazine-atelier .magazine-piece h3{font-size:34px;min-height:0}
+ .site .magazine-atelier .magazine-piece>p{font-size:10px!important;margin-top:7px}
+ .magazine-atelier .size-choices{margin-top:8px}
+ .magazine-atelier .magazine-request{font-size:12px;margin-top:10px;min-height:48px}
+ .single-page .magazine-spine{left:0;transform:none;width:12px;background:linear-gradient(90deg,#10101024,transparent)}
+ .magazine-atelier .magazine-folio{left:15px;right:15px}
+ .magazine-atelier .magazine-navigation{padding-top:24px}
+}
+@media(prefers-reduced-motion:reduce){.magazine-fold{display:none}}
+.magazine-atelier .size-choices button{min-width:44px;min-height:44px;font-size:12px;padding:8px;color:#101010}
+.site .magazine-atelier .size-choices button[aria-pressed=true]{color:#fff;-webkit-text-fill-color:#fff;background:#842133}
