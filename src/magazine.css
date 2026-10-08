@@ -39,3 +39,9 @@
 @media(prefers-reduced-motion:reduce){.magazine-fold{display:none}}
 .magazine-atelier .size-choices button{min-width:44px;min-height:44px;font-size:12px;padding:8px;color:#101010}
 .site .magazine-atelier .size-choices button[aria-pressed=true]{color:#fff;-webkit-text-fill-color:#fff;background:#842133}
+.magazine-edge-arrow{position:absolute;top:35%;z-index:8;width:44px;height:52px;display:grid;place-items:center;background:#842133;color:#fff;box-shadow:0 6px 16px #10101035;animation:magazine-arrow-pulse 2.4s ease-in-out infinite}
+.magazine-edge-arrow svg{width:22px;height:22px}.edge-previous{left:0;border-radius:0 12px 12px 0}.edge-next{right:0;border-radius:12px 0 0 12px}.magazine-edge-arrow:disabled{opacity:.25;animation:none;cursor:default}.magazine-edge-arrow:hover{background:#101010}.magazine-edge-arrow:focus-visible{outline:2px solid white;outline-offset:-5px}
+@keyframes magazine-arrow-pulse{0%,100%{transform:translateX(0);box-shadow:0 6px 16px #10101035}50%{transform:translateX(-3px);box-shadow:0 9px 22px #10101045}}
+@media(prefers-reduced-motion:reduce){.magazine-edge-arrow{animation:none}}
+
+.magazine-edge-arrow{animation-play-state:paused}.magazine-edge-arrow.ambient-visible{animation-play-state:running}.motion-paused .magazine-edge-arrow{animation-play-state:paused}

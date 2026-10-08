@@ -1,6 +1,6 @@
 import {pieceMessage} from './whatsapp';
 import {useEffect,useRef,useState,type PointerEvent} from 'react';
-import type {Look} from './inventory';
+import {availableSizes,validChosenSize,type Look} from './inventory';
 import './magazine.css';
 import {SizeChoices,HighlightedTitle} from './SizeChoices';
 
@@ -13,14 +13,14 @@ export default function MagazineShelf({looks,favorites,toggle}:{looks:Look[];fav
  useEffect(()=>{const media=matchMedia('(max-width:760px)');const update=()=>{setPerPage(media.matches?1:2);setPage(0);setTurn(null);};media.addEventListener('change',update);return()=>media.removeEventListener('change',update);},[]);
  const count=Math.ceil(looks.length/perPage),current=Math.min(page,Math.max(0,count-1));
  useEffect(()=>()=>clearTimeout(timer.current),[]);
- useEffect(()=>{clearTimeout(timer.current);setTurn(null);setPage(p=>Math.min(p,Math.max(0,count-1)));setSelected(s=>Object.fromEntries(Object.entries(s).filter(([id,size])=>looks.some(l=>l.id===Number(id)))));},[looks.map(l=>`${l.id}:${l.size||''}`).join('|')]);
+ useEffect(()=>{clearTimeout(timer.current);setTurn(null);setPage(p=>Math.min(p,Math.max(0,count-1)));setSelected(s=>Object.fromEntries(Object.entries(s).filter(([id,size])=>looks.some(l=>l.id===Number(id)))));},[looks.map(l=>`${l.id}:${JSON.stringify(l.size_stock)}`).join('|')]);
  function go(direction:number){if(turn)return;const next=current+direction;if(next<0||next>=count)return;setDrag(0);setPage(next);if(!matchMedia('(prefers-reduced-motion: reduce)').matches){setTurn({from:current,direction});clearTimeout(timer.current);timer.current=setTimeout(()=>setTurn(null),440);}}
  function down(e:PointerEvent<HTMLDivElement>){if(turn||(e.pointerType==='mouse'&&e.button!==0)||(e.target as HTMLElement).closest('button,select,label,input'))return;suppress.current=false;gesture.current={x:e.clientX,y:e.clientY,pointer:e.pointerId,started:performance.now()};}
  function move(e:PointerEvent<HTMLDivElement>){const g=gesture.current;if(!g)return;const x=e.clientX-g.x,y=e.clientY-g.y;if(!g.axis&&Math.max(Math.abs(x),Math.abs(y))>8){g.axis=Math.abs(x)>Math.abs(y)*1.15?'x':'y';if(g.axis==='x')e.currentTarget.setPointerCapture(e.pointerId);}if(g.axis==='x'){e.preventDefault();suppress.current=true;setDrag(Math.max(-120,Math.min(120,x)));}}
  function up(e:PointerEvent<HTMLDivElement>){const g=gesture.current;gesture.current=null;setDrag(0);if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);if(g?.axis==='x'){const delta=e.clientX-g.x;if((Math.abs(delta)>28||(Math.abs(delta)>16&&Math.abs(delta)/(performance.now()-g.started)>.25)))go(delta<0?1:-1);setTimeout(()=>{suppress.current=false},0);}}
  function spread(index:number,decorative=false){return <div className="magazine-spread">{looks.slice(index*perPage,index*perPage+perPage).map(l=><article className="magazine-page" key={l.id}>
  <div className="magazine-photo"><img src={l.img} alt={decorative?'':l.desc} loading="lazy" draggable="false"/>{<button className={'magazine-save '+(favorites.includes(l.id)?'is-saved':'')} aria-label={`${favorites.includes(l.id)?'Remover':'Salvar'} ${l.name}`} aria-pressed={favorites.includes(l.id)} onClick={()=>toggle(l.id)}><Heart/></button>}</div>
- <div className="magazine-piece"><h3>{decorative?<HighlightedTitle text={l.name}/>:<a href={`/look/${l.id}`}><HighlightedTitle text={l.name}/></a>}</h3><p>{l.type}</p>{<><SizeChoices name={l.name} value={selected[l.id]} onChange={size=>setSelected(s=>({...s,[l.id]:size}))}/><a className="magazine-request" href={`https://wa.me/5535998290565?text=${encodeURIComponent(pieceMessage(l,selected[l.id]))}`} target="_blank" rel="noreferrer">Quero essa peça <Arrow/></a></>}</div>
+ <div className="magazine-piece"><h3>{decorative?<HighlightedTitle text={l.name}/>:<a href={`/look/${l.id}`}><HighlightedTitle text={l.name}/></a>}</h3><p>{l.type}</p>{<><SizeChoices name={l.name} options={availableSizes(l)} value={validChosenSize(l,selected[l.id])} onChange={size=>setSelected(s=>({...s,[l.id]:size}))}/><a className="magazine-request" href={`https://wa.me/5535998290565?text=${encodeURIComponent(pieceMessage(l,validChosenSize(l,selected[l.id])))}`} target="_blank" rel="noreferrer">Quero essa peça <Arrow/></a></>}</div>
  <span className="magazine-folio" aria-hidden="true">{String(index*perPage+looks.slice(index*perPage,index*perPage+perPage).indexOf(l)+1).padStart(2,'0')} <span>Dolce Look</span></span>
  </article>)}{looks.slice(index*perPage,index*perPage+perPage).length===1&&perPage===2&&<div className="magazine-end"><span>Dolce<br/><em>Look.</em></span>{!decorative&&<a href="/colecao">Continue seu olhar <Arrow/></a>}</div>}</div>}
  if(!looks.length)return <p className="magazine-empty">A vitrine está preparando novas escolhas.</p>;
@@ -29,7 +29,7 @@ export default function MagazineShelf({looks,favorites,toggle}:{looks:Look[];fav
  <div className="magazine-book" tabIndex={0} aria-label="Páginas da vitrine. Use as setas para navegar." onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={()=>{gesture.current=null;setDrag(0);suppress.current=false}} onClickCapture={e=>{if(suppress.current){e.preventDefault();e.stopPropagation();suppress.current=false;}}} style={{'--page-drag':`${drag*.035}deg`,'--fold-width':`${Math.abs(drag)*.35}px`} as React.CSSProperties}>
  <div className="magazine-content" inert={!!turn}>{spread(current)}</div>
  {turn&&<div className={'magazine-turn '+(turn.direction>0?'forward':'backward')} aria-hidden="true" inert><div className="magazine-front">{spread(turn.from,true)}</div><div className="magazine-back">{spread(current,true)}</div></div>}
- <div className="magazine-spine" aria-hidden="true"/><div className={'magazine-fold '+(drag>0?'fold-left':'')} aria-hidden="true"/>
+ <button type="button" className="magazine-edge-arrow edge-previous" aria-label="Virar revista para a esquerda" disabled={current===0||!!turn} onClick={()=>go(-1)}><Arrow back/></button><button type="button" className="magazine-edge-arrow edge-next" aria-label="Virar revista para a direita" disabled={current===count-1||!!turn} onClick={()=>go(1)}><Arrow/></button><div className="magazine-spine" aria-hidden="true"/><div className={'magazine-fold '+(drag>0?'fold-left':'')} aria-hidden="true"/>
  </div>
  <div className="magazine-navigation"><button type="button" aria-label="Página anterior da vitrine" disabled={current===0||!!turn} onClick={()=>go(-1)}><Arrow back/> Anterior</button><span role="status" aria-live="polite">Página {current+1} de {count}</span><button type="button" aria-label="Próxima página da vitrine" disabled={current===count-1||!!turn} onClick={()=>go(1)}>Próxima <Arrow/></button></div>
  </div>
