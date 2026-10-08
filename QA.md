@@ -24,3 +24,8 @@ Vercel production READY dpl_61hPJwqyNz624c8PiHaMwWJvmTU4. HTTP route/public bund
 - Explicitly enabled only the two portraits in the requested “Mais que vestir” section; general optional motion remains off. White look-5 MP4 is 253,075 bytes and brown look-9 MP4 is 366,074 bytes. Both are 540 × 960 H.264, silent, faststart, preserving the supplied durations.
 - Desktop and mobile verified both actual video decoders playing muted loops on intersection, pausing offscreen, no extra catalogue videos, no horizontal overflow and zero page errors. Existing photo fallback and reduced-motion/data-saving behavior reused.
 - `UNIVERSE_LOOK_VIDEOS_ENABLED` is an internal section setting, currently true. Set it false along with the general flag when the owner asks to disable optional image videos; the first home portrait remains independent.
+
+
+## Atelier edition — 2026-10-08
+
+Production build passes TypeScript and Vite. Batched local desktop (1440×1000) and mobile (390×844) QA covers the homepage and institutional collection, brand, contact and product pages. No horizontal overflow or page errors. Filters (9 total / 3 shirts), favorite persistence, selection WhatsApp message, mobile menu/Escape and reduced-motion chapters pass. Three chapter photo sources remain look-1, look-7 and look-6 with isolated stacking and one visible copy per stage. A confirmation pass verifies outlined hero lettering, bounded contact section height and corrected mobile headline. Two universe videos retain muted playback and pause offscreen. UI checks use mocked public inventory; no private Admin session or owner data changed.

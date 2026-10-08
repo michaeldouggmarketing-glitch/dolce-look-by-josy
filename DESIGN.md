@@ -157,3 +157,10 @@ Motion is authored in GSAP ScrollTrigger with Lenis wheel duration .75 and nativ
 - **Don't** substitute generated video for the real still photographs.
 - **Don't** reduce the approved full-site world to a landing page or generic repeated fades.
 - **Don't** use wine focus outlines against wine or dark chapters.
+
+
+## Atelier edition — 8 October 2026
+
+The storefront pairs filled Italiana display lettering with outlined emphasis, wine and ivory alternating with chocolate editorial stages, framed original photographs, and bounded warm spotlights. Large reading copy stays filled DM Sans. Every institutional page has authored entrances: masked title rises, lateral editorial introductions, and photographic crop reveals. Background light and selected luminous lettering pause offscreen and when the tab is hidden; reduced motion preserves legible static content. The three wardrobe scroll chapters and their synchronized upward image/color transitions are preserved exactly. All changes are public storefront scope; the operational Admin keeps its existing presentation.
+
+Rollback: GitHub branch `backup/antes-premium-2026-10-08`, commit `72302c0a75e817946261dc7e588e76be84ab4488`.
