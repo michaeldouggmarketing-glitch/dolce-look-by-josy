@@ -1,8 +1,7 @@
-.editorial .editorial-interactive{width:100%;overflow-x:auto;scroll-snap-type:none;transform:none!important;gap:35px;padding:0 6vw 22px;touch-action:pan-y;overscroll-behavior-x:contain;cursor:grab;scroll-behavior:auto}
+.editorial .editorial-interactive{width:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:none;transform:none!important;gap:35px;padding:0 6vw 22px;touch-action:pan-x pan-y;overscroll-behavior-x:contain;cursor:grab;scroll-behavior:auto}
 .editorial-interactive .editorial-frame{flex-shrink:0;width:32vw;min-width:260px;user-select:none}
 .editorial-interactive img{-webkit-user-drag:none;pointer-events:none}
 .editorial-interactive.is-dragging{cursor:grabbing}
 .editorial-controls{display:flex;justify-content:space-between;gap:20px;padding:0 6vw 28px;font-size:12px;color:var(--paper)}
-.editorial-controls button{border-bottom:1px solid currentColor;padding:8px 0;min-height:44px}
 .editorial-controls span{align-self:center;opacity:.85}
 @media(max-width:760px){.editorial .editorial-interactive{gap:25px}.editorial-interactive .editorial-frame{width:76vw;min-width:0}.editorial-controls{font-size:11px}}
