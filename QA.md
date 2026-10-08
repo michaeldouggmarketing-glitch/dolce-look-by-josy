@@ -34,3 +34,8 @@ Production build passes TypeScript and Vite. Batched local desktop (1440×1000) 
 ## Magazine shelf preview — 2026-10-08
 
 Isolated branch preview/vitrine-revista. Production main stays at 21d2d820d656e68f17e5e0060a7740ce09d04079. Only the homepage showcase changes to a two-piece spread with CSS 3D page turn; collection and other site sections remain unchanged. All currently available pieces are paginated. Size selection uses the single actual dolce_products.size value; unknown size has a consultation fallback. No database mutation or fabricated production size. Local Playwright desktop/mobile tests exercise actual CDP touch input horizontally and vertically, keyboard arrows, next/previous limits, favorites and size inclusion in WhatsApp. Reduced motion skips 3D. Test size M exists only in the mocked QA fixture. New client photos and actual sizes have not been supplied yet.
+
+
+## Preview update — filled titles and P–GG
+
+User explicitly requested all products offer P, M, G and GG provisionally. Shared SizeChoices now appears in magazine spreads, normal collection cards and product detail. Selected size is included in each WhatsApp request. Options exist only in the preview UI; no database size or stock was mutated. Filled Italiana returns with wine highlights behind selected title words matching the supplied reference. Desktop/mobile tests pass horizontal/vertical native touch, page limits, keyboard, favorites, size requests in all three surfaces, reduced motion, no overflow and console-error checks. Production main remains untouched.
