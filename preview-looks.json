@@ -1,4 +1,44 @@
 [
-  {"id":900001,"name":"Contrastes naturais","type":"Conjuntos","desc":"Colete e calça de estampa contrastante, combinados com blusa branca.","img":"/media/look-900001.webp"},
-  {"id":900002,"name":"Delicadeza em poá","type":"Conjuntos","desc":"Conjunto claro de blusa sem mangas e calça com poás em tom rosado.","img":"/media/look-900002.webp"}
+  {
+    "id": 900001,
+    "name": "Contrastes naturais",
+    "type": "Conjuntos",
+    "desc": "Colete e calça de estampa contrastante, combinados com blusa branca.",
+    "img": "/media/look-900001.webp"
+  },
+  {
+    "id": 900002,
+    "name": "Delicadeza em poá",
+    "type": "Conjuntos",
+    "desc": "Conjunto claro de blusa sem mangas e calça com poás em tom rosado.",
+    "img": "/media/look-900002.webp"
+  },
+  {
+    "id": 900003,
+    "name": "Luz em amarelo",
+    "type": "Camisas",
+    "desc": "Blusa amarela com calça de listras em tons naturais.",
+    "img": "/media/look-900003.webp"
+  },
+  {
+    "id": 900004,
+    "name": "Linhas naturais",
+    "type": "Conjuntos",
+    "desc": "Blusa sem mangas em tom marrom e calça de listras.",
+    "img": "/media/look-900004.webp"
+  },
+  {
+    "id": 900005,
+    "name": "Renda em destaque",
+    "type": "Blusas",
+    "desc": "Blusa preta de renda com mangas longas e jeans amplo.",
+    "img": "/media/look-900005.webp"
+  },
+  {
+    "id": 900006,
+    "name": "Azul em movimento",
+    "type": "Vestidos",
+    "desc": "Vestido azul com cinto e detalhes em renda.",
+    "img": "/media/look-900006.webp"
+  }
 ]
