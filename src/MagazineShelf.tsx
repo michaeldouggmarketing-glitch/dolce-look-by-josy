@@ -1,3 +1,4 @@
+import {pieceMessage} from './whatsapp';
 import {useEffect,useRef,useState,type PointerEvent} from 'react';
 import type {Look} from './inventory';
 import './magazine.css';
@@ -17,7 +18,7 @@ export default function MagazineShelf({looks,favorites,toggle}:{looks:Look[];fav
  function up(e:PointerEvent<HTMLDivElement>){const g=gesture.current;gesture.current=null;setDrag(0);if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);if(g?.axis==='x'){const delta=e.clientX-g.x;if(Math.abs(delta)>45)go(delta<0?1:-1);setTimeout(()=>{suppress.current=false},0);}}
  function spread(index:number,decorative=false){return <div className="magazine-spread">{looks.slice(index*2,index*2+2).map(l=><article className="magazine-page" key={l.id}>
  <div className="magazine-photo"><img src={l.img} alt={decorative?'':l.desc} loading="lazy" draggable="false"/>{<button className={'magazine-save '+(favorites.includes(l.id)?'is-saved':'')} aria-label={`${favorites.includes(l.id)?'Remover':'Salvar'} ${l.name}`} aria-pressed={favorites.includes(l.id)} onClick={()=>toggle(l.id)}><Heart/></button>}</div>
- <div className="magazine-piece"><h3>{decorative?<HighlightedTitle text={l.name}/>:<a href={`/look/${l.id}`}><HighlightedTitle text={l.name}/></a>}</h3><p>{l.type}</p>{<><SizeChoices name={l.name} value={selected[l.id]} onChange={size=>setSelected(s=>({...s,[l.id]:size}))}/><a className="magazine-request" href={`https://wa.me/5535998290565?text=${encodeURIComponent(`Olá, Josy! Gostei da peça ${l.name} na vitrine Dolce Look.${selected[l.id]?` Selecionei o tamanho ${selected[l.id]}.`:l.size?` Pode confirmar o tamanho ${l.size}?`:' Pode me informar o tamanho?'} Quero confirmar valor e disponibilidade.`)}`} target="_blank" rel="noreferrer">Quero essa peça <Arrow/></a></>}</div>
+ <div className="magazine-piece"><h3>{decorative?<HighlightedTitle text={l.name}/>:<a href={`/look/${l.id}`}><HighlightedTitle text={l.name}/></a>}</h3><p>{l.type}</p>{<><SizeChoices name={l.name} value={selected[l.id]} onChange={size=>setSelected(s=>({...s,[l.id]:size}))}/><a className="magazine-request" href={`https://wa.me/5535998290565?text=${encodeURIComponent(pieceMessage(l,selected[l.id]))}`} target="_blank" rel="noreferrer">Quero essa peça <Arrow/></a></>}</div>
  <span className="magazine-folio" aria-hidden="true">{String(index*2+looks.slice(index*2,index*2+2).indexOf(l)+1).padStart(2,'0')} <span>Dolce Look</span></span>
  </article>)}{looks.slice(index*2,index*2+2).length===1&&<div className="magazine-end"><span>Dolce<br/><em>Look.</em></span>{!decorative&&<a href="/colecao">Continue seu olhar <Arrow/></a>}</div>}</div>}
  if(!looks.length)return <p className="magazine-empty">A vitrine está preparando novas escolhas.</p>;
