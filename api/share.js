@@ -1,3 +1,4 @@
+import previewLooks from '../preview-looks.json' with {type:'json'};
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 export default async function handler(req, res) {
@@ -18,7 +19,7 @@ export default async function handler(req, res) {
     const response = await fetch(url, {headers:{apikey:process.env.VITE_SUPABASE_PUBLISHABLE_KEY},signal:AbortSignal.timeout(6000)});
     if (!response.ok) throw new Error('Inventory unavailable');
     const rows = await response.json();
-    const look = rows[0];
+    const look = rows[0] || (process.env.VERCEL_ENV === 'preview' ? previewLooks.find(p => String(p.id) === id) : null);
     if (!look) return res.status(404).end('<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>Dolce Look</title><p>Essa peça já seguiu seu caminho.</p><a href="/colecao">Descobrir a coleção</a></html>');
     const image = new URL(look.img, origin);
     if (!['https:','http:'].includes(image.protocol)) throw new Error('Invalid image');
