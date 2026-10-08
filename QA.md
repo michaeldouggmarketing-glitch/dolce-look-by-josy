@@ -29,3 +29,8 @@ Vercel production READY dpl_61hPJwqyNz624c8PiHaMwWJvmTU4. HTTP route/public bund
 ## Atelier edition — 2026-10-08
 
 Production build passes TypeScript and Vite. Batched local desktop (1440×1000) and mobile (390×844) QA covers the homepage and institutional collection, brand, contact and product pages. No horizontal overflow or page errors. Filters (9 total / 3 shirts), favorite persistence, selection WhatsApp message, mobile menu/Escape and reduced-motion chapters pass. Three chapter photo sources remain look-1, look-7 and look-6 with isolated stacking and one visible copy per stage. A confirmation pass verifies outlined hero lettering, bounded contact section height and corrected mobile headline. Two universe videos retain muted playback and pause offscreen. UI checks use mocked public inventory; no private Admin session or owner data changed.
+
+
+## Magazine shelf preview — 2026-10-08
+
+Isolated branch preview/vitrine-revista. Production main stays at 21d2d820d656e68f17e5e0060a7740ce09d04079. Only the homepage showcase changes to a two-piece spread with CSS 3D page turn; collection and other site sections remain unchanged. All currently available pieces are paginated. Size selection uses the single actual dolce_products.size value; unknown size has a consultation fallback. No database mutation or fabricated production size. Local Playwright desktop/mobile tests exercise actual CDP touch input horizontally and vertically, keyboard arrows, next/previous limits, favorites and size inclusion in WhatsApp. Reduced motion skips 3D. Test size M exists only in the mocked QA fixture. New client photos and actual sizes have not been supplied yet.
