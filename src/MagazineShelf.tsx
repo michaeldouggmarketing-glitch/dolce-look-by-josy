@@ -1,3 +1,4 @@
+import {brandTypography} from './BrandTypography';
 import {pieceMessage} from './whatsapp';
 import {useEffect,useRef,useState,type PointerEvent} from 'react';
 import {availableSizes,validChosenSize,type Look} from './inventory';
@@ -21,7 +22,7 @@ export default function MagazineShelf({looks,favorites,toggle}:{looks:Look[];fav
  function spread(index:number,decorative=false){return <div className="magazine-spread">{looks.slice(index*perPage,index*perPage+perPage).map(l=><article className="magazine-page" key={l.id}>
  <div className="magazine-photo"><img src={l.img} alt={decorative?'':l.desc} loading="lazy" draggable="false"/>{<button className={'magazine-save '+(favorites.includes(l.id)?'is-saved':'')} aria-label={`${favorites.includes(l.id)?'Remover':'Salvar'} ${l.name}`} aria-pressed={favorites.includes(l.id)} onClick={()=>toggle(l.id)}><Heart/></button>}</div>
  <div className="magazine-piece"><h3>{decorative?<HighlightedTitle text={l.name}/>:<a href={`/look/${l.id}`}><HighlightedTitle text={l.name}/></a>}</h3><p>{l.type}</p>{<><SizeChoices name={l.name} options={availableSizes(l)} value={validChosenSize(l,selected[l.id])} onChange={size=>setSelected(s=>({...s,[l.id]:size}))}/><a className="magazine-request" href={`https://wa.me/5535998290565?text=${encodeURIComponent(pieceMessage(l,validChosenSize(l,selected[l.id])))}`} target="_blank" rel="noreferrer">Quero essa peça <Arrow/></a></>}</div>
- <span className="magazine-folio" aria-hidden="true">{String(index*perPage+looks.slice(index*perPage,index*perPage+perPage).indexOf(l)+1).padStart(2,'0')} <span>Dolce Look</span></span>
+ <span className="magazine-folio" aria-hidden="true">{String(index*perPage+looks.slice(index*perPage,index*perPage+perPage).indexOf(l)+1).padStart(2,'0')} <span>{brandTypography("Dolce Look")}</span></span>
  </article>)}{looks.slice(index*perPage,index*perPage+perPage).length===1&&perPage===2&&<div className="magazine-end"><span>Dolce<br/><em>Look.</em></span>{!decorative&&<a href="/colecao">Continue seu olhar <Arrow/></a>}</div>}</div>}
  if(!looks.length)return <p className="magazine-empty">Nenhuma peça disponível no momento.</p>;
  return <div className={'magazine-shelf magazine-atelier '+(perPage===1?'single-page':'double-page')} role="region" aria-roledescription="revista" aria-label="Vitrine Dolce Look" onKeyDown={e=>{if((e.target as HTMLElement).matches('select,input'))return;if(e.key==='ArrowRight'){e.preventDefault();go(1)}if(e.key==='ArrowLeft'){e.preventDefault();go(-1)}}}>
