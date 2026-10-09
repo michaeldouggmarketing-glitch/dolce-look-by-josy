@@ -56,8 +56,8 @@
 .site .hero-headline{top:8%;width:34vw}
 .site .hero-headline h1{font-size:clamp(44px,4.2vw,66px)}
 .site .hero-headline .line{display:block}
-.site .hero-headline .line>span{display:inline-block;clip-path:inset(0 100% 0 0);animation:hero-type-line 1.45s steps(14,end) .25s both}
-.site .hero-headline .line:last-child>span{animation-duration:1.05s;animation-timing-function:steps(10,end);animation-delay:1.75s}
+.site .hero-headline .line>span{display:inline-block;clip-path:inset(0 100% 0 0);animation:hero-type-line .7s steps(14,end) .1s both}
+.site .hero-headline .line:last-child>span{animation-duration:.5s;animation-timing-function:steps(10,end);animation-delay:.85s}
 @keyframes hero-type-line{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 @media(max-width:760px){
  .site .hero-headline{top:22px;left:6vw;width:88vw}
