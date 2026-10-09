@@ -2,7 +2,7 @@
 // Change this flag on the owner's request and publish the change.
 export const EXTRA_LOOK_VIDEOS_ENABLED = false;
 // This section was explicitly enabled by the owner; disable here on request.
-export const UNIVERSE_LOOK_VIDEOS_ENABLED = true;
+export const UNIVERSE_LOOK_VIDEOS_ENABLED = false;
 
 // Register only reviewed, optimized videos actually present in public/media.
 const videos: Record<number, {image: string; video: string}> = {
