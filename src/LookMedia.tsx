@@ -64,8 +64,10 @@ export default function LookMedia({look, priority=false, alwaysAnimate=false}: {
     return () => element?.pause();
   }, []);
 
+  if (!look) return <span className="media-placeholder" aria-hidden="true"/>;
+
   return <span className="look-media" ref={frame}>
-    <img src={look?.img || '/media/logo.webp'} alt={look?.desc || 'Dolce Look by Josy'} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'auto'}/>
+    <img src={look.img} alt={look?.desc || 'Dolce Look by Josy'} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'auto'}/>
     {hasMotion && allowed && !failed && <video
       className={ready ? 'look-video is-ready' : 'look-video'}
       ref={video} src={started ? motion : undefined}
