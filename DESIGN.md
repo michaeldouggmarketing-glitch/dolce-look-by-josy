@@ -193,3 +193,5 @@ Product cards share measured title, price and size-control row heights across ea
 
 ## Aqualax carousel reference — 28 October 2026
 The user selected the continuous carousel behavior from Aqualax Showroom Premium. Reference: its `motion.js`, published source read on this date. Dolce Look now uses immediate steady horizontal drift (magazine 65px/s, highlights 75px/s, Instagram 32px/s), repeated React-rendered sets and modulo wrapping, without the previous 7–9 second paging delay or scroll snapping. Native input has priority; autoplay stops while touching or focusing content, when hidden/offscreen, for explicit pause and reduced motion. Duplicate views retain shared favorites and selected sizes but are omitted from screen-reader/Tab navigation. The aligned card row measurements remain authoritative.
+
+Category entrance: all four photo frames reveal upward through a rectangular mask together (950ms) when 25% of the category section is visible; text fades in concurrently (750ms). Frames, baselines and spacing never move. Reduced-motion shows the static composition.

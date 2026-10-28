@@ -15,7 +15,15 @@ function useChoreography(root:React.RefObject<HTMLDivElement|null>,signature:str
  const element=root.current;if(!element)return;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');let observer:IntersectionObserver|undefined;const running:Animation[]=[];
  const setup=()=>{observer?.disconnect();running.forEach(a=>a.cancel());if(reduced.matches)return;
- observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;const el=entry.target as HTMLElement;observer?.unobserve(el);const photo=el.dataset.enter==='photo';const animation=el.animate([{opacity:.4,clipPath:photo?'inset(0 9% 0 0)':'inset(0 0 5% 0)'},{opacity:1,clipPath:'inset(0 0 0 0)'}],{duration:photo?800:650,easing:'cubic-bezier(.16,1,.3,1)',fill:'none'});running.push(animation);})},{threshold:.06});
+ observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;const el=entry.target as HTMLElement;
+ if(el.dataset.enter==='categories'){
+  if(entry.intersectionRatio<.25)return;
+  observer?.unobserve(el);
+  el.querySelectorAll('.ed-category>.look-media,.ed-category>.ed-photo-wait').forEach(frame=>running.push(frame.animate([{clipPath:'inset(0 0 100% 0)',opacity:.3},{clipPath:'inset(0 0 0 0)',opacity:1}],{duration:950,easing:'cubic-bezier(.16,1,.3,1)',fill:'none'})));
+  el.querySelectorAll('.ed-category>div').forEach(copy=>running.push(copy.animate([{opacity:.05},{opacity:1}],{duration:750,easing:'ease-out',fill:'none'})));
+  return;
+ }
+ observer?.unobserve(el);const photo=el.dataset.enter==='photo';const animation=el.animate([{opacity:.4,clipPath:photo?'inset(0 9% 0 0)':'inset(0 0 5% 0)'},{opacity:1,clipPath:'inset(0 0 0 0)'}],{duration:photo?800:650,easing:'cubic-bezier(.16,1,.3,1)',fill:'none'});running.push(animation);})},{threshold:[.06,.25]});
  element.querySelectorAll('[data-enter],.catalogue-intro>div,.product-grid,.product-detail .detail-content,.brand-story-copy,.contact-intro>div,.site-footer').forEach(el=>observer?.observe(el));};setup();reduced.addEventListener('change',setup);return()=>{observer?.disconnect();running.forEach(a=>a.cancel());reduced.removeEventListener('change',setup)};
  },[root,signature]);}
 function BrandWord(){return <span className="brand-word"><span className="title-mark">Dolce</span> <em>{brandTypography("Look")}</em><small>BY JOSY</small></span>}
