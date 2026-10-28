@@ -35,7 +35,12 @@ export function useEditorialRail(count:number,speed:number){
   // Repeated React cards keep live inventory, favorites and size actions functional.
   // Screen readers and Tab encounter only the original set.
   const reconcileCopies=()=>[...el.children].forEach((child,index)=>{
-   if(index<count)return;
+   if(index<count){
+    child.removeAttribute('aria-hidden');
+    if(child instanceof HTMLAnchorElement)child.removeAttribute('tabindex');
+    child.querySelectorAll<HTMLElement>('a,button,input,[tabindex]').forEach(node=>node.removeAttribute('tabindex'));
+    return;
+   }
    child.setAttribute('aria-hidden','true');
    if(child instanceof HTMLAnchorElement)child.tabIndex=-1;
    child.querySelectorAll<HTMLElement>('a,button,input,[tabindex]').forEach(node=>node.tabIndex=-1);
