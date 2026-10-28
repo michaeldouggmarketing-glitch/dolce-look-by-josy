@@ -1,14 +1,14 @@
 ---
 name: Dolce Look by Josy
-description: Cinematic fashion storefront with real exclusive pieces.
+description: Neutral editorial fashion storefront with upright real inventory photography.
 colors:
-  paper: "#f3eee6"
-  ink: "#251e1a"
-  wine: "#842133"
-  muted: "#716358"
-  line: "#d1c3b5"
-  soft: "#e7dbcd"
-  dark: "#241b19"
+  paper: "#f5f2ea"
+  ink: "#1b1b18"
+  wine: "#22221e"
+  muted: "#5f5c55"
+  line: "#d4d0c6"
+  soft: "#eeebe2"
+  dark: "#242420"
   cinema-ground: "#e8ded1"
   chapter-earth: "#30251f"
   chapter-paper: "#ded0c0"
@@ -88,6 +88,25 @@ components:
     padding: "13px"
     height: "44px"
 ---
+
+# Approved editorial edition — 28 October 2026
+
+This edition is the current public visual authority and supersedes the historical cinematic guidance below. The owner selected `upload/IMG-20261028-WA0021.jpg`: warm neutral paper, near-black typography, upright aligned photographs and a complete editorial storefront. The brand keeps its burgundy Dolce rectangle (#842133), black Look lettering and bright-red hearts (#d4202c). Other interface surfaces, controls and selected states remain neutral.
+
+The home sequence is the header, split type/photo hero, four category previews, two-photo magazine, product highlights rail, versatility composition with values, monochrome Instagram rail, personal consultation, FAQ, and footer. Institutional routes, collection, favorites and product detail continue to exist with the neutral public styling. The normative public overrides are `src/editorial-home.css`; `src/style.css` remains the incumbent base and Admin styling. Italiana and DM Sans remain self-hosted. The header is 88px on desktop and 82px below 760px. Product images use upright 3:4 frames; cards share a baseline, with no alternating padding or tilt. The home hero is 54/46 columns on desktop and stacked on mobile. Highlights show four columns on desktop and two on mobile, with native horizontal scroll and explicit directional controls. Category previews become two columns on mobile.
+
+Motion uses visible-default Web Animations entrances (750ms exponential ease-out), hero type/photo reveals, a soft magazine crossfade and restrained photo scaling. No animation rotates photographs or staggers card baselines. Magazine pages advance every eight seconds, stop while hovered or focused, and expose previous, next and pause controls on desktop and mobile. Reduced motion disables entrances, transitions, smooth scrolling and magazine autoplay. Existing LookMedia retains its visibility, reduced-motion and data-saving safeguards.
+
+All photographic surfaces and product controls consume the existing shared inventory hook. Availability, stock sizes, price, favorites, detail links and WhatsApp consultation retain their existing data flow. Sold/unavailable pieces leave public surfaces through the shared inventory. Loading, error, empty and unavailable-detail states remain explicit. Do not hardcode catalog counts, stock or prices. Admin, inventory and share API behavior are outside this visual replacement and remain unchanged.
+
+Public focus uses a visible neutral outline; action controls use near-black fills and paper text. The mobile magazine pause control remains visible, and configured prices remain visible in mobile product cards. Native FAQ details, keyboard rail navigation and dialog menu behavior remain available.
+
+Verification record: source review confirmed inventory wiring, routes and the mobile pause/price corrections. Browser evidence belongs to `.impeccable/review/`; the initial full-page desktop capture occurred before lazy magazine photographs loaded and must not be treated as proof of missing images. Source review alone does not establish final responsive fit, live inventory propagation or Admin end-to-end behavior.
+
+# Historical design records
+
+The following earlier specifications and recovery notes are retained for history. Their tilted portraits, wine chapters, pinned cinematic choreography and staggered card layouts are superseded by the approved 28 October editorial edition above.
+
 
 # Design System: Dolce Look by Josy
 
