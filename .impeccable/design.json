@@ -706,6 +706,16 @@
       },
       "layout": "Upright, aligned editorial photography; no photo tilt or staggered card baseline.",
       "inventory": "Existing shared inventory hook, Admin and share API unchanged."
+    },
+    "alignedMotionEdition": {
+      "date": "2026-10-28",
+      "cards": "Shared measured natural title, price and size row heights; upright equal photo frames; no truncated names.",
+      "rails": [
+        "magazine",
+        "highlights",
+        "instagram"
+      ],
+      "motion": "Horizontal native scroll-snap; pause on hover/focus/touch, offscreen and hidden tabs; reduced-motion disables autoplay; section clip reveals keep frames stationary."
     }
   },
   "components": [

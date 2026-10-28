@@ -48,3 +48,48 @@
 @media(max-width:360px){.site-editorial .header-tools{gap:10px}.site-editorial .site-header .brand-word{font-size:25px}.ed-hero-note{display:none}.ed-magazine-copy .ed-round-controls{gap:4px}.ed-magazine-copy .ed-round-controls button{width:34px;height:34px}.ed-magazine h2{font-size:43px}.ed-product-rail>.product-card{flex-basis:calc((100% - 15px)/2)}.site-editorial .size-choices button{min-width:28px}.ed-category{gap:8px}.ed-category h2{font-size:21px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.site-editorial *, .site-editorial *:before,.site-editorial *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @view-transition{navigation:auto}
+
+/* Aligned garment cards: real copy determines one shared set of row heights. */
+.site-editorial .product-card{display:flex;flex-direction:column;align-self:stretch;min-width:0}
+.site-editorial .product-photo{flex-shrink:0;width:100%}
+.site-editorial .product-info{display:flex;flex-direction:column;align-items:stretch;gap:0;flex-shrink:0}
+.site-editorial .product-info>a{display:block;min-block-size:var(--card-title-height,2.24em);width:100%}
+.site-editorial .product-info h3{overflow-wrap:anywhere;margin:0;text-wrap:pretty}
+.site-editorial .product-info>.product-price{display:block!important;min-block-size:var(--card-price-height,0px);margin:0;padding:0;line-height:1.5}
+.site-editorial .product-price-value{display:block;padding-top:6px;font:12px/1.5 'DM Sans',sans-serif}
+.site-editorial .product-card>.size-choices{flex-shrink:0;min-block-size:var(--card-sizes-height,36px);width:100%;margin:12px 0}
+.site-editorial .product-card>.size-request{flex-shrink:0;margin:0}
+.site-editorial .product-grid{align-items:start}
+/* Native horizontal rails keep the photo edges and baselines locked together. */
+.ed-spread{display:flex;height:clamp(490px,48vw,720px);min-height:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth;overscroll-behavior-x:contain;position:relative;max-width:100%;contain:inline-size;animation:none}
+.ed-spread::-webkit-scrollbar{display:none}
+.ed-magazine-page{flex:0 0 calc((100% - 3px)/2);height:100%;min-height:0;scroll-snap-align:start}
+.ed-instagram-rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;scroll-behavior:smooth;position:relative;max-width:100%;contain:inline-size}
+.ed-instagram-rail>a{flex:0 0 calc((100% - 15px)/6);scroll-snap-align:start;min-width:0}
+.ed-instagram-rail::-webkit-scrollbar{display:none}
+.ed-product-rail{overscroll-behavior-x:contain;scroll-behavior:smooth;align-items:stretch}
+.ed-instagram-actions{display:flex;align-items:center;gap:25px}
+.ed-instagram-actions>a{display:flex;align-items:center;gap:15px;font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+.ed-instagram-actions>a>svg{width:17px;height:17px}
+.ed-products-heading .ed-round-controls,.ed-instagram-actions .ed-round-controls{gap:8px}
+.ed-round-controls button{flex-shrink:0}
+@media(max-width:1100px) and (min-width:761px){.ed-spread{height:570px}.ed-products-heading>div{gap:15px}.ed-instagram-actions{gap:15px}}
+@media(max-width:760px){
+ .ed-spread{height:clamp(330px,91vw,540px)}
+ .ed-instagram-rail>a{flex-basis:calc((100% - 6px)/3)}
+ .ed-instagram-actions{margin-top:15px;justify-content:space-between;gap:14px}
+ .ed-instagram-actions>a{font-size:8px;letter-spacing:.04em;gap:8px}
+ .ed-instagram-actions .ed-round-controls{gap:5px}
+ .ed-instagram-actions .ed-round-controls button{width:34px;height:36px}
+ .ed-instagram-actions .ed-play-toggle{width:26px!important}
+ .ed-products-heading .ed-round-controls{gap:5px}
+ .ed-products-heading .ed-play-toggle{width:26px}
+ .ed-products-heading h2{font-size:32px;min-width:0}
+ .ed-products-heading>div{flex-shrink:0}
+ .ed-magazine-copy{grid-template-columns:minmax(0,1fr) auto;gap:14px}
+ .ed-magazine-copy .ed-play-toggle{width:26px}
+ .ed-magazine h2{font-size:clamp(36px,10.5vw,50px)}
+ .ed-magazine-copy>p{font-size:12px}
+ .ed-versatility h2{white-space:normal;overflow-wrap:normal}
+}
+@media(prefers-reduced-motion:reduce){.ed-spread,.ed-instagram-rail,.ed-product-rail{scroll-behavior:auto}}

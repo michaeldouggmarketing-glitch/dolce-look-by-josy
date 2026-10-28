@@ -187,3 +187,6 @@ Rollback: GitHub branch `backup/antes-premium-2026-10-08`, commit `72302c0a75e81
 
 ## Recovery — 27 October 2026
 The minimalist replacement was rejected. Restore the complete prior storefront, home, sections, choreography, editorial carousels and approved media motion. Preserve inventory request error handling and remove the logo fallback from product photographs. The inactive dedicated database was restored and its 15 catalog records verified. Any future visual simplification must preserve the complete structure and effects unless the owner explicitly requests removal.
+
+## Alignment and lateral motion — 28 October 2026
+Product cards share measured title, price and size-control row heights across each rail/grid. Full names remain visible; font loading, responsive widths and inventory changes trigger remeasurement. Photos, sizes and CTA baselines stay aligned. Magazine, highlights and Instagram use native horizontal scroll with snap points, keyboard arrows, touch swipes, previous/next and explicit pause controls. Automatic advances run only while visible, stop on hidden tabs, hover/focus and touch interaction, and honor reduced motion. Section entrances reveal within fixed frames; no staggered card offsets, tilt or moving section frames.
