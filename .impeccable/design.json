@@ -715,7 +715,7 @@
         "highlights",
         "instagram"
       ],
-      "motion": "Horizontal native scroll-snap; pause on hover/focus/touch, offscreen and hidden tabs; reduced-motion disables autoplay; section clip reveals keep frames stationary."
+      "motion": "Aqualax reference motion.js: immediate continuous drift at 65/75/32px per second; repeated live React views; modulo wrap, no snap/paging delay. Native input priority, offscreen/hidden/reduced-motion/explicit pause and rail focus stop. Shared title/price/size row heights remain fixed."
     }
   },
   "components": [

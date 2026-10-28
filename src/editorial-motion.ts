@@ -20,37 +20,61 @@ export function useAlignedCards(root:RefObject<HTMLElement|null>,signature:strin
  },[root,signature]);
 }
 
-// Native scrolling keeps every frame on one baseline, including touch swipes.
-export function useEditorialRail(count:number,interval:number){
+// Aqualax motion.js reference: continuous rAF drift, modulo wrap and native touch priority.
+export function useEditorialRail(count:number,speed:number){
  const rail=useRef<HTMLDivElement>(null);
  const [paused,setPaused]=useState(false),[reduced,setReduced]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);
- const [position,setPosition]=useState(0),[canMove,setCanMove]=useState(false);
- const hover=useRef(false),focused=useRef(false),inView=useRef(false),lastAction=useRef(0);
+ const [canMove,setCanMove]=useState(false);
+ const controls=useRef({focused:false,touching:false,visible:false});
+ const step=useRef<(direction:number)=>void>(()=>{});
  useEffect(()=>{const mq=matchMedia('(prefers-reduced-motion: reduce)');const change=()=>setReduced(mq.matches);mq.addEventListener('change',change);return()=>mq.removeEventListener('change',change)},[]);
- function move(direction:number){
-  const el=rail.current;if(!el)return;
-  lastAction.current=Date.now();
-  const max=el.scrollWidth-el.clientWidth;
-  const child=el.firstElementChild as HTMLElement|null;
-  const gap=parseFloat(getComputedStyle(el).columnGap)||0;
-  const step=child?child.getBoundingClientRect().width+gap:el.clientWidth;
-  const visible=Math.max(1,Math.floor((el.clientWidth+gap)/step));
-  const current=Math.round(el.scrollLeft/step);
-  const next=direction>0?(el.scrollLeft>=max-3?0:Math.min(max,(current+visible)*step)):(el.scrollLeft<=3?max:Math.max(0,(current-visible)*step));
-  el.scrollTo({left:next,behavior:reduced?'instant':'smooth'});
- }
  useEffect(()=>{
   const el=rail.current;if(!el)return;
-  const update=()=>{setPosition(Math.round(el.scrollLeft));setCanMove(el.scrollWidth>el.clientWidth+3)};
-  const observer=new IntersectionObserver(([entry])=>{inView.current=entry.isIntersecting},{threshold:.3});observer.observe(el);
+  let frame=0,last=0,carry=0,wheelFrame=0,wheeling=false,stride=0,length=0;
+  // Repeated React cards keep live inventory, favorites and size actions functional.
+  // Screen readers and Tab encounter only the original set.
+  [...el.children].forEach((child,index)=>{
+   if(index<count)return;
+   child.setAttribute('aria-hidden','true');
+   if(child instanceof HTMLAnchorElement)child.tabIndex=-1;
+   child.querySelectorAll<HTMLElement>('a,button,input,[tabindex]').forEach(node=>node.tabIndex=-1);
+  });
+  const allowed=()=>controls.current.visible&&!controls.current.focused&&!controls.current.touching&&!wheeling&&!paused&&!reduced&&!document.hidden&&length>0;
+  const stop=()=>{cancelAnimationFrame(frame);frame=0;last=0};
+  const start=()=>{if(allowed()&&!frame)frame=requestAnimationFrame(tick)};
+  function tick(time:number){
+   frame=0;if(!allowed()){last=0;return}
+   const delta=last?Math.min(time-last,50):16;last=time;carry+=delta*speed;
+   const px=Math.floor(carry);carry-=px;
+   if(px)el!.scrollLeft=(el!.scrollLeft+px)%length;
+   frame=requestAnimationFrame(tick);
+  }
+  const update=()=>{
+   const first=el.children[0] as HTMLElement|undefined,repeat=el.children[count] as HTMLElement|undefined;
+   stride=first?first.getBoundingClientRect().width+(parseFloat(getComputedStyle(el).columnGap)||0):0;
+   length=count>1&&repeat&&first?repeat.offsetLeft-first.offsetLeft:0;
+   setCanMove(count>1&&el.scrollWidth>el.clientWidth+3);
+   if(length&&el.scrollLeft>=length)el.scrollLeft%=length;
+   start();
+  };
+  step.current=direction=>{
+   if(!length||!stride)return;
+   stop();el.scrollLeft=(el.scrollLeft+direction*stride+length)%length;carry=0;start();
+  };
+  const scroll=()=>{if(length&&el.scrollLeft>=length)el.scrollLeft%=length};
+  const down=()=>{controls.current.touching=true;stop()};
+  const release=()=>{controls.current.touching=false;start()};
+  const wheel=()=>{wheeling=true;stop();cancelAnimationFrame(wheelFrame);wheelFrame=requestAnimationFrame(()=>{wheeling=false;start()})};
+  const focus=()=>{controls.current.focused=true;stop()};
+  const blur=(event:FocusEvent)=>{if(!el.contains(event.relatedTarget as Node|null)){controls.current.focused=false;start()}};
+  const visibility=()=>document.hidden?stop():start();
+  const observer=new IntersectionObserver(([entry])=>{controls.current.visible=entry.isIntersecting;entry.isIntersecting?start():stop()},{threshold:0,rootMargin:'120px'});observer.observe(el);
   const resize=new ResizeObserver(update);resize.observe(el);update();
-  el.addEventListener('scroll',update,{passive:true});
-  const timer=setInterval(()=>{
-   if(!paused&&!reduced&&!document.hidden&&inView.current&&!hover.current&&!focused.current&&Date.now()-lastAction.current>=interval)move(1);
-  },interval);
-  return()=>{observer.disconnect();resize.disconnect();clearInterval(timer);el.removeEventListener('scroll',update)};
- },[count,paused,reduced,interval]);
- return {rail,paused,reduced,position,canMove,move,toggle:()=>setPaused(p=>!p),
-  hold:{onMouseEnter:()=>{hover.current=true},onMouseLeave:()=>{hover.current=false},onFocusCapture:()=>{focused.current=true},onBlurCapture:(e:React.FocusEvent<HTMLElement>)=>{if(!e.currentTarget.contains(e.relatedTarget))focused.current=false},onPointerDown:(e:React.PointerEvent<HTMLElement>)=>{if(e.pointerType==='touch'&&!(e.target as Element).closest('.ed-play-toggle'))setPaused(true)}},
-  onKeyDown:(e:React.KeyboardEvent<HTMLDivElement>)=>{if(e.target===e.currentTarget&&(e.key==='ArrowRight'||e.key==='ArrowLeft')){e.preventDefault();move(e.key==='ArrowRight'?1:-1)}}};
+  el.addEventListener('scroll',scroll,{passive:true});el.addEventListener('pointerdown',down,{passive:true});
+  el.addEventListener('wheel',wheel,{passive:true});el.addEventListener('focusin',focus);el.addEventListener('focusout',blur);
+  window.addEventListener('pointerup',release,{passive:true});window.addEventListener('pointercancel',release,{passive:true});document.addEventListener('visibilitychange',visibility);
+  return()=>{stop();cancelAnimationFrame(wheelFrame);observer.disconnect();resize.disconnect();step.current=()=>{};el.removeEventListener('scroll',scroll);el.removeEventListener('pointerdown',down);el.removeEventListener('wheel',wheel);el.removeEventListener('focusin',focus);el.removeEventListener('focusout',blur);window.removeEventListener('pointerup',release);window.removeEventListener('pointercancel',release);document.removeEventListener('visibilitychange',visibility)};
+ },[count,paused,reduced,speed]);
+ return {rail,paused,reduced,canMove,move:(direction:number)=>step.current(direction),toggle:()=>setPaused(p=>!p),
+  onKeyDown:(e:React.KeyboardEvent<HTMLDivElement>)=>{if(e.target===e.currentTarget&&(e.key==='ArrowRight'||e.key==='ArrowLeft')){e.preventDefault();step.current(e.key==='ArrowRight'?1:-1)}}};
 }

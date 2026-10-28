@@ -93,3 +93,5 @@
  .ed-versatility h2{white-space:normal;overflow-wrap:normal}
 }
 @media(prefers-reduced-motion:reduce){.ed-spread,.ed-instagram-rail,.ed-product-rail{scroll-behavior:auto}}
+/* Aqualax continuous drift: no snapping or delayed page changes during motion. */
+.ed-spread,.ed-product-rail,.ed-instagram-rail{scroll-snap-type:none;scroll-behavior:auto}
