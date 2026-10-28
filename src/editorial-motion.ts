@@ -33,12 +33,14 @@ export function useEditorialRail(count:number,speed:number){
   let frame=0,last=0,carry=0,wheelFrame=0,wheeling=false,stride=0,length=0;
   // Repeated React cards keep live inventory, favorites and size actions functional.
   // Screen readers and Tab encounter only the original set.
-  [...el.children].forEach((child,index)=>{
+  const reconcileCopies=()=>[...el.children].forEach((child,index)=>{
    if(index<count)return;
    child.setAttribute('aria-hidden','true');
    if(child instanceof HTMLAnchorElement)child.tabIndex=-1;
    child.querySelectorAll<HTMLElement>('a,button,input,[tabindex]').forEach(node=>node.tabIndex=-1);
   });
+  reconcileCopies();
+  const mutations=new MutationObserver(reconcileCopies);mutations.observe(el,{childList:true,subtree:true});
   const allowed=()=>controls.current.visible&&!controls.current.focused&&!controls.current.touching&&!wheeling&&!paused&&!reduced&&!document.hidden&&length>0;
   const stop=()=>{cancelAnimationFrame(frame);frame=0;last=0};
   const start=()=>{if(allowed()&&!frame)frame=requestAnimationFrame(tick)};
@@ -73,7 +75,7 @@ export function useEditorialRail(count:number,speed:number){
   el.addEventListener('scroll',scroll,{passive:true});el.addEventListener('pointerdown',down,{passive:true});
   el.addEventListener('wheel',wheel,{passive:true});el.addEventListener('focusin',focus);el.addEventListener('focusout',blur);
   window.addEventListener('pointerup',release,{passive:true});window.addEventListener('pointercancel',release,{passive:true});document.addEventListener('visibilitychange',visibility);
-  return()=>{stop();cancelAnimationFrame(wheelFrame);observer.disconnect();resize.disconnect();step.current=()=>{};el.removeEventListener('scroll',scroll);el.removeEventListener('pointerdown',down);el.removeEventListener('wheel',wheel);el.removeEventListener('focusin',focus);el.removeEventListener('focusout',blur);window.removeEventListener('pointerup',release);window.removeEventListener('pointercancel',release);document.removeEventListener('visibilitychange',visibility)};
+  return()=>{stop();cancelAnimationFrame(wheelFrame);observer.disconnect();resize.disconnect();mutations.disconnect();step.current=()=>{};el.removeEventListener('scroll',scroll);el.removeEventListener('pointerdown',down);el.removeEventListener('wheel',wheel);el.removeEventListener('focusin',focus);el.removeEventListener('focusout',blur);window.removeEventListener('pointerup',release);window.removeEventListener('pointercancel',release);document.removeEventListener('visibilitychange',visibility)};
  },[count,paused,reduced,speed]);
  return {rail,paused,reduced,canMove,move:(direction:number)=>step.current(direction),toggle:()=>setPaused(p=>!p),
   onKeyDown:(e:React.KeyboardEvent<HTMLDivElement>)=>{if(e.target===e.currentTarget&&(e.key==='ArrowRight'||e.key==='ArrowLeft')){e.preventDefault();step.current(e.key==='ArrowRight'?1:-1)}}};
