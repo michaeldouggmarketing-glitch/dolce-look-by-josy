@@ -1,199 +1,112 @@
 ---
 name: Dolce Look by Josy
-description: Neutral editorial fashion storefront with upright real inventory photography.
+description: White fashion storefront following the approved Carolla Ferraro reference.
 colors:
-  paper: "#f5f2ea"
-  ink: "#1b1b18"
-  wine: "#22221e"
-  muted: "#5f5c55"
-  line: "#d4d0c6"
-  soft: "#eeebe2"
-  dark: "#242420"
-  cinema-ground: "#e8ded1"
-  chapter-earth: "#30251f"
-  chapter-paper: "#ded0c0"
-  rose-emphasis: "#e7b5ae"
-  earth-emphasis: "#d6b19b"
-  dark-emphasis: "#d4aa9a"
-  light-hover: "#e0cfbc"
-  field-white: "#fff"
+  paper: "#fff"
+  ink: "#242424"
+  muted: "#626262"
+  line: "#e8e5e1"
+  soft: "#f5f1eb"
+  campaign: "#e4d8c9"
+  updates: "#f4e7d5"
+  updates-action: "#8b6038"
 typography:
-  display:
+  brand:
     fontFamily: "Italiana, Georgia, serif"
-    fontSize: "clamp(74px, 7.4vw, 112px)"
+    fontSize: "38px"
+    lineHeight: 0.95
+    letterSpacing: "-.035em"
+  category:
+    fontFamily: "Italiana, Georgia, serif"
+    fontSize: "clamp(30px, 3.3vw, 53px)"
     fontWeight: 400
-    lineHeight: 1.03
-    letterSpacing: "-.03em"
+    lineHeight: 1.1
   headline:
-    fontFamily: "Italiana, Georgia, serif"
-    fontSize: "clamp(46px, 5.2vw, 80px)"
-    fontWeight: 400
-    lineHeight: 1.08
-    letterSpacing: "-.03em"
-  product-title:
-    fontFamily: "Italiana, serif"
-    fontSize: "30px"
-    fontWeight: 400
-    lineHeight: 1.14
-  body:
     fontFamily: "DM Sans, sans-serif"
-    fontSize: "14px"
-    lineHeight: 1.85
-  label:
+    fontSize: "23px"
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: ".06em"
+  product-title:
     fontFamily: "DM Sans, sans-serif"
     fontSize: "12px"
-  admin-title:
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: ".015em"
+  price:
     fontFamily: "DM Sans, sans-serif"
-    fontSize: "32px"
+    fontSize: "13px"
     fontWeight: 500
-    lineHeight: 1.3
+    lineHeight: 1.5
+  label:
+    fontFamily: "DM Sans, sans-serif"
+    fontSize: "10px"
+    letterSpacing: ".02em"
 rounded:
   square: "0"
-  circle: "50%"
+  action: "22px"
 spacing:
-  page: "6vw"
-  editorial: "9vw"
-  grid-column: "28px"
-  grid-row: "65px"
-  mobile-column: "16px"
-  mobile-row: "35px"
+  grid-column: "20px"
+  grid-row: "36px"
+  mobile-column: "12px"
+  mobile-row: "26px"
 components:
-  button-primary:
+  button-product:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.paper}"
-    rounded: "{rounded.square}"
-    padding: "18px 23px"
-    height: "56px"
-  button-primary-hover:
-    backgroundColor: "{colors.wine}"
-  button-light:
+    rounded: "{rounded.action}"
+    padding: "10px 15px"
+    height: "38px"
+  size-option:
     backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
-    padding: "18px 23px"
-    height: "56px"
-  button-light-hover:
-    backgroundColor: "{colors.light-hover}"
-  favorite:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.circle}"
-    size: "42px"
-  favorite-saved:
-    backgroundColor: "{colors.wine}"
-    textColor: "{colors.paper}"
-  admin-field:
-    backgroundColor: "{colors.field-white}"
-    textColor: "{colors.ink}"
     rounded: "{rounded.square}"
-    padding: "13px"
-    height: "44px"
+    height: "32px"
 ---
-
-# Approved editorial edition — 28 October 2026
-
-This edition is the current public visual authority and supersedes the historical cinematic guidance below. The owner selected `upload/IMG-20261028-WA0021.jpg`: warm neutral paper, near-black typography, upright aligned photographs and a complete editorial storefront. The brand keeps its burgundy Dolce rectangle (#842133), black Look lettering and bright-red hearts (#d4202c). Other interface surfaces, controls and selected states remain neutral.
-
-The home sequence is the header, split type/photo hero, four category previews, two-photo magazine, product highlights rail, versatility composition with values, monochrome Instagram rail, personal consultation, FAQ, and footer. Institutional routes, collection, favorites and product detail continue to exist with the neutral public styling. The normative public overrides are `src/editorial-home.css`; `src/style.css` remains the incumbent base and Admin styling. Italiana and DM Sans remain self-hosted. The header is 88px on desktop and 82px below 760px. Product images use upright 3:4 frames; cards share a baseline, with no alternating padding or tilt. The home hero is 54/46 columns on desktop and stacked on mobile. Highlights show four columns on desktop and two on mobile, with native horizontal scroll and explicit directional controls. Category previews become two columns on mobile.
-
-Motion uses visible-default Web Animations entrances (750ms exponential ease-out), hero type/photo reveals, a soft magazine crossfade and restrained photo scaling. No animation rotates photographs or staggers card baselines. Magazine pages advance every eight seconds, stop while hovered or focused, and expose previous, next and pause controls on desktop and mobile. Reduced motion disables entrances, transitions, smooth scrolling and magazine autoplay. Existing LookMedia retains its visibility, reduced-motion and data-saving safeguards.
-
-All photographic surfaces and product controls consume the existing shared inventory hook. Availability, stock sizes, price, favorites, detail links and WhatsApp consultation retain their existing data flow. Sold/unavailable pieces leave public surfaces through the shared inventory. Loading, error, empty and unavailable-detail states remain explicit. Do not hardcode catalog counts, stock or prices. Admin, inventory and share API behavior are outside this visual replacement and remain unchanged.
-
-Public focus uses a visible neutral outline; action controls use near-black fills and paper text. The mobile magazine pause control remains visible, and configured prices remain visible in mobile product cards. Native FAQ details, keyboard rail navigation and dialog menu behavior remain available.
-
-Verification record: source review confirmed inventory wiring, routes and the mobile pause/price corrections. Browser evidence belongs to `.impeccable/review/`; the initial full-page desktop capture occurred before lazy magazine photographs loaded and must not be treated as proof of missing images. Source review alone does not establish final responsive fit, live inventory propagation or Admin end-to-end behavior.
-
-# Historical design records
-
-The following earlier specifications and recovery notes are retained for history. Their tilted portraits, wine chapters, pinned cinematic choreography and staggered card layouts are superseded by the approved 28 October editorial edition above.
-
 
 # Design System: Dolce Look by Josy
 
 ## Overview
 
-**Creative North Star: "Dolce in motion"**
+The current approved world is the white Carolla Ferraro e-commerce reference (https://www.carollaferraro.com.br), adapted with the original Dolce Look identity and real catalogue photography. It replaces the earlier cinematic/editorial direction. Keep Dolce Look's logo and red hearts; do not import the competitor's identity or product content.
 
-Dolce in motion uses warm ivory paper, deep wine, near-black type and the original fashion photographs. Large Italiana headlines, overlapping portrait frames and authored scroll choreography make the collection feel personal and editorial. The approved full-site world replaces the earlier landing-page composition.
-
-The public experience pairs expressive imagery with clear routes, selection and direct WhatsApp consultation. The protected Admin uses plain DM Sans, compact product rows and straightforward form states. Inventory governs every photographic surface; the confirmed nine available pieces are a point-in-time state, never a permanent visual promise.
-
-**Key Characteristics:**
-- Three offset real portraits anchor the cinematic home.
-- Wine, earth and ivory chapters reveal through upward masks.
-- Square photographic frames and restrained circular utilities.
-- Serif public storytelling; sans-serif operational controls.
+The storefront is spacious, restrained and product-led: small navigation, generous image area, compact uppercase product information and a repeated catalogue rhythm. This document governs the public storefront; protected Admin remains operational in character.
 
 ## Colors
 
-Warm paper and near-black form the reading surfaces; wine creates distinct cinematic chapters and interactive emphasis. CSS custom properties in `src/style.css` are normative: paper, ink, wine, muted, line, soft and dark. The remaining frontmatter colors capture implemented chapter, emphasis and field values.
-
-**The Contrast Rule.** Use rose or earth emphasis inside wine and dark chapters, and paper focus outlines on chapter 0, chapter 1, contact scene, editorial, brand diptych and footer. Elsewhere the outline is wine, 2px with 5px offset.
+White paper and dark neutral ink dominate. Muted grey supports secondary information; light neutral rules divide controls. Warm campaign and updates panels supply the observed supporting tones. Existing red hearts belong to the original brand identity; they do not make the page a red theme. The legacy CSS variable `--wine` resolves to `#242424` inside `.site-shop` and is not a burgundy accent in this world.
 
 ## Typography
 
-Italiana with Georgia/serif fallback gives public headlines their spacious character. DM Sans/sans-serif carries body text, navigation, labels and the Admin. Hero display uses the frontmatter clamp; wardrobe headlines use `clamp(64px,6.5vw,100px)` at 1.02. Generic h1 is `clamp(64px,6.8vw,100px)` at 1.02. Body copy is 14px/1.85, generally bounded to 290–420px. Product names are 30px/1.14. Labels use 8–12px, with uppercase category labels and tabular selection/chapter counts.
-
-**The Two Voices Rule.** Use Italiana for public editorial hierarchy and product names; use DM Sans for Admin headings, fields and controls.
+DM Sans carries navigation, body copy, headings and uppercase product titles. Italiana carries the brand wordmark and italic category names over photography. Header brand is 38px on desktop and 28px at mobile; category names become 34px at mobile. Navigation is 10px desktop. Product titles are 12px/1.5 desktop and 10px/1.55 mobile; prices are 13px desktop and 11px mobile. Keep names complete and wrapped rather than truncated.
 
 ## Layout
 
-The 90px desktop header sits above a viewport cinema, minimum 700px and maximum 1050px. Headline starts at 6vw; the center portrait is 27vw wide, 75% high, rotated 3°, with smaller portraits rotated −8° and 8°. Standard collection gutters are 6vw; narrative layouts use 9vw. Product grids have three columns with 65px row and 28px column gaps, and a 75px offset on card 1.
+Home container: max-width 1600px, centered, desktop padding 24px. Product grid has four desktop columns with 36px row / 20px column gaps, changing to two columns at 760px with 26px / 12px gaps. Mobile home padding is 12px. Header compacts at 1150px; desktop navigation becomes a menu at 900px. Category cards expose about 3.55 desktop, 2.55 intermediate and 1.65 mobile cards to suggest horizontal continuation.
 
-At 1100px navigation tightens and catalogue controls stack. At 760px the header becomes 78px, navigation becomes a full-screen dialog, hero portraits remain layered beneath the headline, and grids become two columns with 35px/16px gaps and alternating 35px offsets. Brand/contact/detail layouts flow vertically. Detail content is sticky at 45px only on desktop. Mobile editorial uses native horizontal scrolling, 76vw frames and scroll snapping. The desktop editorial pin starts at 900px in JavaScript.
-
-Home, `/colecao`, `/look/:id`, `/a-marca`, `/atendimento`, `/favoritos` and `/admin` have distinct implemented surfaces. Route and scene captures live in `.impeccable/review/`, including desktop/mobile main, hero-scroll, wardrobe, collection, editorial, contact, brand and product captures, `admin.png`, `focus-contact.png` and `focus-footer.png`. They document the v3 fidelity ceiling; extend this implemented world rather than the stale v2 design.
+Product photo aspect ratio is 3 / 4.2. `useAlignedCards` measures the tallest real title, price and size-choice group within each grid using ResizeObserver and after fonts load. Its `--card-title-height`, `--card-price-height` and `--card-sizes-height` properties reserve consistent rows, keeping size selectors and product actions aligned without cutting names.
 
 ## Elevation & Depth
 
-Tonal chapters, overlap, rotation and crop create most depth. Hero portraits use `0 18px 46px #241b1920`; the universe detail uses `0 18px 44px #251e1a24`; the floating WhatsApp utility uses `0 8px 25px #251e1a25`. Ambient arcs have translucent concentric rings, not card elevation. Product cards remain unboxed.
+Catalogue cards are flat and borderless. Images and restrained warm panel backgrounds provide hierarchy. Category text uses the observed shadow over photography for legibility. Focus uses a 2px ink outline with 4px offset.
 
 ## Shapes
 
-Actions, forms, cards and portraits have square corners. Only save and floating WhatsApp controls, plus decorative arcs, are circular. Product images use 3:4 frames; composition preserves real garment detail. Masks are rectangular insets, with the wardrobe unveiling upwards.
+Photography and panel geometry stay rectangular. Size selectors are square with thin neutral borders; product actions are compact pills (22px radius desktop, 20px mobile). Favorite controls are circular overlays.
 
 ## Components
 
-Primary actions use ink/paper, 18px 23px padding, 56px minimum height and wine hover fill. A diagonal light sweep travels on hover over .55s. Light actions invert paper/ink and hover to light-hover. Underlined links animate their arrow 3px diagonally. Navigation reveals a 1px wine underline over .25s. Favorites are 42px circles (36px mobile), becoming wine/paper with filled heart when saved. Product photos scale to 1.055 over .8s; desktop discovery strips reveal on hover or focus within.
+Navigation uses small DM Sans links and outline icons, with search, favorites and the existing responsive menu behavior. Product cards expose real image, complete uppercase name, BRL price or “Consulte o valor”, available sizes, favorite state and “Ver peça”. Selected sizes use ink fill and white type.
 
-Catalogue categories use a wine active underline; search and sort have bottom borders. Admin fields use white fill, a 1px line border, 13px padding and 44px minimum height; textarea minimum is 100px. Admin product rows show photo, status and explicit edit/sale/restore controls behind authorization. Owner Michael administers the real Supabase one-unit inventory; visual state reflects backend availability and never implies checkout.
+Category rail uses `useEditorialRail(4, .024)` with native horizontal scrolling, duplicated visual cards excluded from keyboard and screen-reader traversal, previous/next controls and explicit pause. Pointer interaction pauses autoplay for four seconds; keyboard focus, reduced motion, hidden documents and viewport observation also guard animation. Reduced motion disables transitions and smooth scrolling. Image hover zoom is subtle (1.025 product / 1.035 category).
 
-Motion is authored in GSAP ScrollTrigger with Lenis wheel duration .75 and native touch. Hero scrub .3 coordinates center enlargement, peeling side portraits, headline recession, new line and progress. Wardrobe scrub .25 couples upward panel masks with image scale/rotation and incoming text. Photo parallax, word lighting, desktop editorial travel and closing panel unframing support the chapter rhythm. Ticker (42s), arcs (14s) and scroll cue (2.5s) are bounded ambient motion. IntersectionObserver starts/stops ticker/arcs offscreen, and document visibility pauses them. Reduced motion removes animation/transitions and pins, makes wardrobe panels flow vertically, and keeps word text visible.
+Home composition is recorded in `.impeccable/surfaces/storefront.md`; it is page strategy rather than a reusable token. Existing collection, detail, brand, contact, favorites, inventory/admin and sharing functions remain part of product truth.
 
 ## Do's and Don'ts
 
-### Do:
-- **Do** preserve the original photographs, recognizable garments and anatomy.
-- **Do** derive every product image, detail and selection count from current available inventory.
-- **Do** retain the coordinated scale, rotation, masks and text changes in pinned scenes.
-- **Do** use paper focus outlines on wine and dark surfaces.
-- **Do** pause ambient loops offscreen and when the document is hidden; honor reduced motion.
-- **Do** keep Admin headings and controls in DM Sans.
-
-### Don't:
-- **Don't** fabricate prices, history, testimonials, addresses or delivery policies.
-- **Don't** freeze the nine-piece count into static marketing copy.
-- **Don't** substitute generated video for the real still photographs.
-- **Don't** reduce the approved full-site world to a landing page or generic repeated fades.
-- **Don't** use wine focus outlines against wine or dark chapters.
-
-
-## Atelier edition — 8 October 2026
-
-The storefront pairs filled Italiana display lettering with outlined emphasis, wine and ivory alternating with chocolate editorial stages, framed original photographs, and bounded warm spotlights. Large reading copy stays filled DM Sans. Every institutional page has authored entrances: masked title rises, lateral editorial introductions, and photographic crop reveals. Background light and selected luminous lettering pause offscreen and when the tab is hidden; reduced motion preserves legible static content. The three wardrobe scroll chapters and their synchronized upward image/color transitions are preserved exactly. All changes are public storefront scope; the operational Admin keeps its existing presentation.
-
-Rollback: GitHub branch `backup/antes-premium-2026-10-08`, commit `72302c0a75e817946261dc7e588e76be84ab4488`.
-
-
-## Recovery — 27 October 2026
-The minimalist replacement was rejected. Restore the complete prior storefront, home, sections, choreography, editorial carousels and approved media motion. Preserve inventory request error handling and remove the logo fallback from product photographs. The inactive dedicated database was restored and its 15 catalog records verified. Any future visual simplification must preserve the complete structure and effects unless the owner explicitly requests removal.
-
-## Alignment and lateral motion — 28 October 2026
-Product cards share measured title, price and size-control row heights across each rail/grid. Full names remain visible; font loading, responsive widths and inventory changes trigger remeasurement. Photos, sizes and CTA baselines stay aligned. Magazine, highlights and Instagram use native horizontal scroll with snap points, keyboard arrows, touch swipes, previous/next and explicit pause controls. Automatic advances run only while visible, stop on hidden tabs, hover/focus and touch interaction, and honor reduced motion. Section entrances reveal within fixed frames; no staggered card offsets, tilt or moving section frames.
-
-## Aqualax carousel reference — 28 October 2026
-The user selected the continuous carousel behavior from Aqualax Showroom Premium. Reference: its `motion.js`, published source read on this date. Dolce Look now uses immediate steady horizontal drift (magazine 65px/s, highlights 75px/s, Instagram 32px/s), repeated React-rendered sets and modulo wrapping, without the previous 7–9 second paging delay or scroll snapping. Native input has priority; autoplay stops while touching or focusing content, when hidden/offscreen, for explicit pause and reduced motion. Duplicate views retain shared favorites and selected sizes but are omitted from screen-reader/Tab navigation. The aligned card row measurements remain authoritative.
-
-Category entrance: all four photo frames reveal upward through a rectangular mask together (950ms) when 25% of the category section is visible; text fades in concurrently (750ms). Frames, baselines and spacing never move. Reduced-motion shows the static composition.
-
-Touch selection grace period: every pointer contact within a carousel pauses motion; release starts a fresh four-second timer. Further contact or a previous/next action restarts the timer. Pointer-focused size/favorite buttons do not prevent automatic resumption; keyboard focus, explicit pause and reduced motion retain their safeguards.
+- Do follow the selected competitor's visual structure using Dolce Look branding and authentic products/photos.
+- Do preserve the white background, small navigation and four-to-two-column grid.
+- Do align cards through measured content heights and show missing prices honestly.
+- Don't revive the superseded dark cinematic/editorial world on this storefront.
+- Don't invent stock, prices, delivery, returns, payment promises, reviews or company facts.
+- Don't treat the observed catalogue count as a fixed product limit.
