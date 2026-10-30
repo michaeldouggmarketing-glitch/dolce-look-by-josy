@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     if (!['https:','http:'].includes(image.protocol)) throw new Error('Invalid image');
     const destination = `/look/${id}`;
     const title = `${look.name} · Dolce Look by Josy`;
-    const description = look.desc || 'Uma escolha exclusiva da Dolce Look. Converse com a Josy sobre esta peça.';
+    const description = look.desc || 'Uma escolha exclusiva da Dolce Look. Converse com a equipe sobre esta peça.';
     const html = `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(title)}</title><meta name="description" content="${escape(description)}"><meta property="og:type" content="website"><meta property="og:site_name" content="Dolce Look by Josy"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}"><meta property="og:image" content="${escape(image.href)}"><meta property="og:image:alt" content="${escape(look.name)}"><meta property="og:url" content="${escape(origin)}/peca/${id}"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="${escape(origin)}${destination}"></head><body><h1>${escape(look.name)}</h1><p>${escape(description)}</p><a href="${destination}"><img src="${escape(image.href)}" alt="${escape(look.name)}" style="max-width:100%;width:360px"><br>Conhecer a peça</a><script>location.replace(${JSON.stringify(destination)})</script></body></html>`;
     return res.status(200).end(req.method === 'HEAD' ? '' : html);
   } catch {

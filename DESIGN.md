@@ -110,3 +110,6 @@ Home composition is recorded in `.impeccable/surfaces/storefront.md`; it is page
 - Don't revive the superseded dark cinematic/editorial world on this storefront.
 - Don't invent stock, prices, delivery, returns, payment promises, reviews or company facts.
 - Don't treat the observed catalogue count as a fixed product limit.
+
+## Product magazine extension
+The magazine extends the white storefront; it does not replace the home direction. Neutral paper #f8f6f1, ink #282823 and supporting text #625e55 suggest a printed fashion edition. Italiana 32–48px names accompany upright authentic photography. Desktop uses equal photo/info columns; mobile stacks them. A bounded .76s 3D leaf rotation with a shaded reverse is the focal interaction; live drag previews the neighboring sheet. Reduced motion switches sheets immediately. Controls remain usable by keyboard, with native dialog focus containment and Escape dismissal. Color chips are labeled real product data, not site palette choices.
