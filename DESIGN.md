@@ -116,3 +116,6 @@ The magazine extends the white storefront; it does not replace the home directio
 
 ## Stock information extension — October 31
 A quiet sticky neutral strip precedes the header: background #f4f3ef, ink #383b32, secondary #5b6054 and muted olive icon #4d5c45. It carries factual operational information without pulsing dots or simulated live badges. Desktop uses 11/10px two-line text; mobile 10/9px. A native details disclosure explains the workflow and weekly hours. The Admin counterpart uses a plain operational panel and explicit confirmation, not a pop-up. At the user's latest direction, the public Dolce word has transparent background and dark lettering; prior burgundy-block descriptions above are superseded. Original paired hearts remain red.
+
+## November 1 product presentation
+The active shop mode uses a plain Carolla-style product fiche: left photography with thumbnail rail when present; right uppercase DM Sans21–25px title, concise description, colors, sizes, true stock review and a single dark WhatsApp CTA. Mobile stacks photos above selections. Category grids reuse the aligned four/two-column cards. The prior paper/leaf magazine is dormant by default and retained behind the Admin presentation switch. No leaf-turn animation occurs in shop mode.
