@@ -1,6 +1,6 @@
 ---
 name: Dolce Look by Josy
-description: Preserved white storefront with an optional complete ivory and olive magazine.
+description: Preserved white storefront with optional ivory and olive magazine editions.
 colors:
   paper: "#fff"
   ink: "#242424"
@@ -18,7 +18,16 @@ colors:
   magazine-workspace: "#e9e6de"
   magazine-action: "#323a2d"
   magazine-action-hover: "#505c46"
+  refined-paper: "#fffefb"
+  refined-workspace: "#eeede8"
+  refined-olive: "#374332"
+  refined-photo-ground: "#e6e3da"
 typography:
+  refined-cover:
+    fontFamily: "Italiana, serif"
+    fontSize: "clamp(46px, 5.3vw, 72px)"
+    fontWeight: 400
+    lineHeight: 1
   magazine-cover:
     fontFamily: "Italiana, Georgia, serif"
     fontSize: "clamp(50px, 6vw, 80px)"
@@ -96,9 +105,11 @@ components:
 
 The current approved world is the white Carolla Ferraro e-commerce reference (https://www.carollaferraro.com.br), adapted with the original Dolce Look identity and real catalogue photography. It replaces the earlier cinematic/editorial direction. Keep Dolce Look's logo and red hearts; do not import the competitor's identity or product content.
 
-The storefront is spacious, restrained and product-led: small navigation, generous image area, compact uppercase product information and a repeated catalogue rhythm. This document governs the public storefront; protected Admin remains operational in character. The optional complete magazine is a scoped ivory/olive variant; it preserves the approved shop and earlier product magazine rather than replacing either.
+The storefront is spacious, restrained and product-led: small navigation, generous image area, compact uppercase product information and a repeated catalogue rhythm. This document governs the public storefront; protected Admin remains operational in character. The optional magazines are scoped ivory/olive variants. The latest refined edition supersedes the rejected complete-magazine composition as the active design direction for new magazine work, while preserving the shop and both older variants. The user described the complete publication as “muito embaralhada”; its earlier review approval is historical evidence.
 
 ## Colors
+
+The refined edition overrides paper, ink and olive only under `.fm-refined`: `#fffefb`, `#292d27` and `#374332`. Workspace is `#eeede8`; contained photography rests on `#e6e3da`. Other magazine tokens inherit from `.fm-site`. These local literals are observed implementation values, not a global storefront palette replacement.
 
 The complete magazine scopes `--fm-paper`, `--fm-ink`, `--fm-muted`, `--fm-line` and `--fm-olive` inside `.fm-site`. Its workspace is warm neutral; controls are dark olive. The original red paired hearts remain the only red accent in this variant.
 
@@ -110,6 +121,8 @@ DM Sans carries navigation, body copy, headings and uppercase product titles. It
 
 ## Layout
 
+Refined edition: reader maximum 1368px with 36px desktop side padding; cover and product spread use equal columns. Sheets use `clamp(560px, calc(100svh - 270px), 740px)` with a 560px minimum. Full authentic images use `object-fit: contain`; photo frames and text no longer alternate with contents/category interstitial sheets. Category tabs stay sticky at 48px desktop. Below 760px, toolbar sticks at 48px and tabs at 116px, reader padding is 10px, cover photo is 320px high and product photo is `clamp(280px, 43svh, 390px)`. Copy follows the image; options use two columns, then one below 370px. Desktop product copy can scroll vertically. These are source-derived rules awaiting rendered verification. Page strategy lives in `.impeccable/surfaces/refined-magazine.md`.
+
 Complete magazine: a 1300px reader with 32px side padding contains a rectangular two-column book; desktop sheets have 660px minimum height and height `min(70vw,720px)`. Cover divides 56/44, contents 43/57, category 36/64 and product 50/50. At 760px pages stack photo above copy; at 360px controls compact further. Photos settle upright and aligned. Toolbar and bottom page navigator stay sticky; help pages grow when FAQ answers expand. Contents, all products and service chapters remain reachable independently of gestures.
 
 Home container: max-width 1600px, centered, desktop padding 24px. Product grid has four desktop columns with 36px row / 20px column gaps, changing to two columns at 760px with 26px / 12px gaps. Mobile home padding is 12px. Header compacts at 1150px; desktop navigation becomes a menu at 900px. Category cards expose about 3.55 desktop, 2.55 intermediate and 1.65 mobile cards to suggest horizontal continuation.
@@ -117,6 +130,8 @@ Home container: max-width 1600px, centered, desktop padding 24px. Product grid h
 Product photo aspect ratio is 3 / 4.2. `useAlignedCards` measures the tallest real title, price and size-choice group within each grid using ResizeObserver and after fonts load. Its `--card-title-height`, `--card-price-height` and `--card-sizes-height` properties reserve consistent rows, keeping size selectors and product actions aligned without cutting names.
 
 ## Elevation & Depth
+
+The refined paper uses `0 18px 40px #33382916` desktop and `0 10px 25px #33382910` mobile. Its binding is hidden; restrained paper depth and the existing manual leaf communicate the publication.
 
 The complete magazine uses a structural paper shadow (`0 24px 48px #282c2020`), a narrow binding gradient and a shaded reverse during manual turns. These effects belong to the publication, not shop cards. Resting photos are unrotated.
 
@@ -127,6 +142,8 @@ Catalogue cards are flat and borderless. Images and restrained warm panel backgr
 Photography and panel geometry stay rectangular. Size selectors are square with thin neutral borders; product actions are compact pills (22px radius desktop, 20px mobile). Favorite controls are circular overlays.
 
 ## Components
+
+Refined category tabs are small DM Sans buttons with a two-pixel olive selected underline and at least 44px height. The new edition keeps rectangular olive actions (48px minimum), groups colors and sizes, and removes the duplicate page signature. Product heading is 42px desktop, 35px below 900px and 32px below 760px. The scoped leaf easing becomes `cubic-bezier(.22,.07,.12,1)`; duration remains 820ms. Do not apply this timing override to archived modes.
 
 Complete magazine controls use rectangular dark olive actions, thin olive option borders, olive selected sizes and olive favorite states. A native dialog supplies searchable contents, saved selection and enlarged genuine photos; modal focus and Escape use native dialog behavior. Product pages show real description, price or consultation fallback, real size/color choices, save action, WhatsApp and actual review status. Selection shows saved color/size and offers a combined WhatsApp request. Choices persist across page turns and visits; validation suppresses obsolete choices at handoff.
 

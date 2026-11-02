@@ -66,3 +66,12 @@ Remote settings switched to magazine for a live preview test: old category magaz
 - External design detector was not run: its earlier external request was rejected by automatic approval review. No detector pass is claimed.
 
 Complete-magazine confirmation: desktop1440 and mobile390 cover/product plus desktop help captures inspected. Browser additionally verified all four FAQ answers expanded (sheet grows to802px, no horizontal overflow), horizontal pointer drag help→contact, keyboard Left contact→help. Stable hash reload route exercised. Independent finish reviewer disposition ship for source7359affd325e7074aeb5affae816dab127558683, no material fixes. 13 existing business-hour/overdue/timezone/label tests pass. Remote settings constraint verified to accept shop/magazine/magazine-site; globalmode remains shop until productionREADY. Authenticated AdminUI, liveinventory removals and reducedmotion interaction remain unexercised in this task.
+
+
+## November 2 refined magazine — source handoff
+
+- Latest user rejection (“muito embaralhada”) supersedes the older complete-magazine ship disposition. Refined edition needs its own current browser evidence and fresh review.
+- Implementation lead reports production build passed for preview source a3fbf8fb86e1b7e6024da18a9f532c01675f1387. Documenter source scan confirms conditional refined rendering, four browse-mode values, direct category tabs, removed index/category leaves, contained photo CSS, grouped product choices and separate refined session position.
+- Lead reports database constraint applied for all four modes; new edition not activated. Documenter did not independently query remote settings. Archived white shop and both old magazines remain selectable in source.
+- Pending current-edition checks: desktop/mobile full-photo framing and overflow, sticky toolbar/tabs, category-limited previous/next and Todos, empty categories, service links, favorites/choice persistence, valid WhatsApp, keyboard/touch/dialog focus, reduced motion, live product removal and authenticated Admin switching.
+- No refined-edition browser QA or detector pass is claimed. Earlier detector external request was rejected by automatic approval review and was not retried. Documentation only was edited in this handoff.

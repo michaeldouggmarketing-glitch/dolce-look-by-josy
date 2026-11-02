@@ -19,6 +19,10 @@
       {
         "name": "magazine-compact",
         "value": "360px"
+      },
+      {
+        "name": "refined-options-stack",
+        "value": "370px"
       }
     ],
     "motion": [
@@ -41,6 +45,11 @@
         "name": "full-magazine-leaf",
         "value": "820ms cubic-bezier(.34,.06,.18,1)",
         "purpose": "Manual whole-publication turn; live horizontal drag preview; immediate page switch under reduced motion."
+      },
+      {
+        "name": "refined-magazine-leaf",
+        "value": "820ms cubic-bezier(.22,.07,.12,1)",
+        "purpose": "Scoped manual refined-edition leaf; inherited immediate switch under reduced motion. No autoplay."
       }
     ],
     "alignment": {
@@ -61,6 +70,16 @@
         "name": "magazine-paper",
         "value": "0 24px 48px #282c2020",
         "purpose": "Structural depth under the complete publication only."
+      },
+      {
+        "name": "refined-paper",
+        "value": "0 18px 40px #33382916",
+        "purpose": "Refined desktop paper only."
+      },
+      {
+        "name": "refined-paper-mobile",
+        "value": "0 10px 25px #33382910",
+        "purpose": "Refined paper at or below 760px."
       }
     ],
     "variants": {
@@ -74,6 +93,18 @@
           "dolce-magazine-page (session)"
         ],
         "navigation": "Stable #pagina= page identifiers; contents/search, arrows and horizontal gestures."
+      },
+      "magazine-refined": {
+        "scope": ".fm-refined",
+        "tokens": "DESIGN.md refined-* primitives; src/magazine-refined.css scoped overrides",
+        "layout": "1368px reader, equal desktop columns, full contained photos; stack below 760px; grouped product options; separate contents/category leaves removed.",
+        "navigation": "Sticky category tabs open first available product; previous/next remain within selected category; Todos includes all products. Buscar retains brand/help/contact links; Ajuda is direct.",
+        "persistence": [
+          "dolce-favorites (shared local)",
+          "dolce-magazine-choices (shared local)",
+          "dolce-magazine-refined-page (separate session)"
+        ],
+        "status": "Source implemented; browser QA and fresh review pending. Previous full-magazine approval superseded by explicit user rejection."
       }
     }
   },
@@ -124,14 +155,15 @@
   ],
   "narrative": {
     "northStar": "Approved Carolla Ferraro storefront reference",
-    "overview": "White, product-led e-commerce composition with Dolce Look identity and real catalogue photography. Supersedes the former cinematic editorial world. An optional whole-site publication uses upright real photography, ivory paper and olive controls while retaining both shop and earlier product-only magazine.",
+    "overview": "White, product-led e-commerce composition with Dolce Look identity and real catalogue photography. Supersedes the former cinematic editorial world. An optional whole-site publication uses upright real photography, ivory paper and olive controls while retaining both shop and earlier product-only magazine. The user rejected the complete-publication composition as confusing; a separate refined edition uses direct categories, contained photos and grouped choices. Both older magazines and the white storefront remain available.",
     "keyCharacteristics": [
       "Small DM Sans navigation",
       "Italiana brand and italic categories",
       "Uppercase products",
       "Four desktop / two mobile columns",
       "Measured card alignment",
-      "Scoped complete ivory/olive publication with manual page turns"
+      "Scoped complete ivory/olive publication with manual page turns",
+      "Refined optional edition: direct category tabs, full photographs and compact grouped choices"
     ],
     "dos": [
       "Use authentic product data and photos.",
