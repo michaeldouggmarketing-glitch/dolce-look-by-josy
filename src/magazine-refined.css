@@ -7,3 +7,5 @@
 /* One sticky header owns both controls and categories. */
 .fm-refined .fm-toolbar{flex-wrap:wrap;gap:12px 25px}.fm-refined .fm-toolbar>.fm-category-tabs{position:static;top:auto;width:100%;flex:0 0 100%;padding:0;margin:0}.fm-refined .fm-product-copy .size-choices legend{position:static;width:auto;height:auto;overflow:visible;clip:auto;display:block}
 @media(max-width:760px){.fm-refined .fm-toolbar{gap:4px 10px;padding-bottom:0}.fm-refined .fm-toolbar>.fm-category-tabs{justify-content:space-between;padding-top:3px}.fm-refined .fm-category-tabs button{padding-inline:5px}.fm-refined .fm-category-tabs .fm-service-tab{margin-left:0}}
+
+@media(min-width:761px){.fm-refined .fm-toolbar{position:sticky;top:50px;z-index:20}.fm-refined .fm-book{scroll-margin-top:215px}}
