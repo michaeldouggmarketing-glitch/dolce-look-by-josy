@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-30T11:15:55.045517+00:00",
+  "generatedAt": "2026-11-02T00:00:00Z",
   "title": "Design System: Dolce Look by Josy",
   "extensions": {
     "breakpoints": [
@@ -15,6 +15,10 @@
       {
         "name": "mobile",
         "value": "760px"
+      },
+      {
+        "name": "magazine-compact",
+        "value": "360px"
       }
     ],
     "motion": [
@@ -32,6 +36,11 @@
         "name": "reduced-motion",
         "value": "static",
         "purpose": "Disable animation, transitions and smooth scrolling."
+      },
+      {
+        "name": "full-magazine-leaf",
+        "value": "820ms cubic-bezier(.34,.06,.18,1)",
+        "purpose": "Manual whole-publication turn; live horizontal drag preview; immediate page switch under reduced motion."
       }
     ],
     "alignment": {
@@ -46,6 +55,26 @@
     "focus": {
       "outline": "2px solid #242424",
       "offset": "4px"
+    },
+    "shadows": [
+      {
+        "name": "magazine-paper",
+        "value": "0 24px 48px #282c2020",
+        "purpose": "Structural depth under the complete publication only."
+      }
+    ],
+    "variants": {
+      "magazine-site": {
+        "scope": ".fm-site",
+        "tokens": "DESIGN.md magazine-* primitives; src/full-magazine.css --fm-* variables",
+        "layout": "Upright two-column desktop sheets; stacked below 760px; sticky toolbar and page navigator.",
+        "persistence": [
+          "dolce-favorites (local)",
+          "dolce-magazine-choices (local)",
+          "dolce-magazine-page (session)"
+        ],
+        "navigation": "Stable #pagina= page identifiers; contents/search, arrows and horizontal gestures."
+      }
     }
   },
   "components": [
@@ -83,21 +112,31 @@
       "description": "Storefront component extracted from current implementation.",
       "html": "<article class=\"ds-card\"><a href=\"#product\">Nome da peça</a><span>Consulte o valor</span></article>",
       "css": ".ds-card{display:flex;flex-direction:column;background:#fff;color:#242424}.ds-card a{min-height:36px;color:inherit;text-decoration:none;font:400 12px/1.5 \"DM Sans\",sans-serif;text-transform:uppercase;letter-spacing:.015em}.ds-card span{font:500 13px/1.5 \"DM Sans\",sans-serif;padding-top:7px}.ds-card a:hover{text-decoration:underline}.ds-card a:focus-visible{outline:2px solid #242424;outline-offset:4px}"
+    },
+    {
+      "name": "Magazine action",
+      "kind": "button",
+      "refersTo": "button-magazine",
+      "description": "Rectangular olive action in the complete publication.",
+      "html": "<button class=\"ds-magazine-action\">Abrir a revista</button>",
+      "css": ".ds-magazine-action{display:flex;align-items:center;background:var(--fm-action,#323a2d);color:#fff;min-height:49px;padding:15px 20px;border:0;border-radius:0;font:400 12px/1.4 \"DM Sans\",sans-serif;transition:background .2s}.ds-magazine-action:hover{background:#505c46}.ds-magazine-action:focus-visible{outline:2px solid #46503e;outline-offset:4px}"
     }
   ],
   "narrative": {
     "northStar": "Approved Carolla Ferraro storefront reference",
-    "overview": "White, product-led e-commerce composition with Dolce Look identity and real catalogue photography. Supersedes the former cinematic editorial world.",
+    "overview": "White, product-led e-commerce composition with Dolce Look identity and real catalogue photography. Supersedes the former cinematic editorial world. An optional whole-site publication uses upright real photography, ivory paper and olive controls while retaining both shop and earlier product-only magazine.",
     "keyCharacteristics": [
       "Small DM Sans navigation",
       "Italiana brand and italic categories",
       "Uppercase products",
       "Four desktop / two mobile columns",
-      "Measured card alignment"
+      "Measured card alignment",
+      "Scoped complete ivory/olive publication with manual page turns"
     ],
     "dos": [
       "Use authentic product data and photos.",
-      "Preserve logo and red hearts."
+      "Preserve logo and red hearts.",
+      "Keep complete-magazine photos aligned and upright, and its red limited to original brand hearts."
     ],
     "donts": [
       "Do not invent commerce policies or prices.",
