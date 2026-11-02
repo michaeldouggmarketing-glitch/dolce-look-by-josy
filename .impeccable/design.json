@@ -50,6 +50,11 @@
         "name": "refined-magazine-leaf",
         "value": "820ms cubic-bezier(.22,.07,.12,1)",
         "purpose": "Scoped manual refined-edition leaf; inherited immediate switch under reduced motion. No autoplay."
+      },
+      {
+        "name": "payment-editorial-drop",
+        "value": "900ms cubic-bezier(.16,1,.3,1); 110ms stagger",
+        "purpose": "Scoped payment/visit copy reveal from translateY(-48px), opacity 0 to rest; once at 22% art intersection. Visible default; skipped with reduced motion."
       }
     ],
     "alignment": {
@@ -106,6 +111,13 @@
           "dolce-magazine-category (session category bookmark)"
         ],
         "status": "Build passed; initial browser category limits and Marrom/M selection WhatsApp verified by lead. Updated captures conditionally reviewed; desktop product captured and inspected. Final cross-category runtime and final review pending."
+      },
+      "payment-editorial": {
+        "scope": ".payment-editorial",
+        "layout": "Home 1600px maximum, 24px desktop/12px mobile padding. Visit two equal columns, stacked at 760px. Magazine benefits page grows to content.",
+        "assets": "Available real Camisas/Vestidos catalogue photos with fallbacks; no claimed shop interior.",
+        "navigation": "Home after editorial panels; magazine benefits chapter via 6x and Buscar; conditions WhatsApp, Maps search and collection actions.",
+        "status": "Build passed per lead; desktop captures recorded. Mobile and interaction verification pending at documentation handoff."
       }
     }
   },

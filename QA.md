@@ -78,3 +78,12 @@ Complete-magazine confirmation: desktop1440 and mobile390 cover/product plus des
 - No detector pass claimed. Earlier detector external request was rejected by automatic approval review and was not retried. Documentation only was edited in this recheck; no UI or authenticated Admin testing by documenter.
 
 Final runtime confirmation a7b8a4c: selected Camisas on product8 (1/2), then same-origin direct /look/900006 loaded Azul em movimento with Vestidos selected, 2/2 and next disabled. Desktop scroll retained toolbar computed sticky top50px; no horizontal document overflow. Desktop product capture saved and independently reviewed at finish. Authenticated Admin UI and live stock mutation remain outside this runtime check.
+
+
+## November 2 payment/store editorial — bounded handoff
+- Scope: shared PaymentEditorial in home and magazine benefits, with user-authorized 6x wording and downward copy reveal. No database/Admin changes.
+- Lead reports production build passed; preview 361c11d. Desktop payment and visit captures are recorded in `.impeccable/review/payment-desktop.jpg` and `payment-visit-desktop.jpg`. Mobile 390px capture and runtime navigation/reduced-motion checks are pending at this documentation handoff; no pass claimed.
+- Source confirms visible default content, per-art one-time IntersectionObserver reveal, reduced-motion bypass, real available catalogue assets and collection/WhatsApp/Maps search destinations. Source inspection is not an interaction test.
+- External detector remains unrun after earlier automatic approval rejection; not retried. Preview-only remote d77b0ff `public/qa-payment.html` must not ship to main.
+
+Payment final confirmation: independent finish reviewer ship for desktop payment/visit and actual390pxiframe mobile payment/visit screenshots plus component/source. Mobile innerhtml width383/scrollWidth383 (outerframe390 with scrollbar). Site home contains both newartmodules and no horizontal overflow. Magazine benefitschapter accessible via6xbutton; collection/conditions/maps controls present. Build and whitespace checks pass. No database/auth/Admin changes. Runtime motion timing and reducedmotion were source-reviewed, not claimed independently measured. QAfixture remains preview-only, excluded from production source tree.
