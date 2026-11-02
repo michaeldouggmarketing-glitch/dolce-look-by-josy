@@ -97,14 +97,15 @@
       "magazine-refined": {
         "scope": ".fm-refined",
         "tokens": "DESIGN.md refined-* primitives; src/magazine-refined.css scoped overrides",
-        "layout": "1368px reader, equal desktop columns, full contained photos; stack below 760px; grouped product options; separate contents/category leaves removed.",
-        "navigation": "Sticky category tabs open first available product; previous/next remain within selected category; Todos includes all products. Buscar retains brand/help/contact links; Ajuda is direct.",
+        "layout": "1368px reader, equal desktop columns, full contained photos; stack below 760px; grouped choices and fully visible size legend. One sticky toolbar owns static category tabs: top 50px desktop/48px mobile; book scroll margin 215px/190px.",
+        "navigation": "Category tabs open first available product; previous/next stay within selected category; Todos includes all products. Initial direct links and history reconcile cross-category destinations. Buscar retains brand/help/contact; Ajuda is direct.",
         "persistence": [
           "dolce-favorites (shared local)",
           "dolce-magazine-choices (shared local)",
-          "dolce-magazine-refined-page (separate session)"
+          "dolce-magazine-refined-page (separate session)",
+          "dolce-magazine-category (session category bookmark)"
         ],
-        "status": "Source implemented; browser QA and fresh review pending. Previous full-magazine approval superseded by explicit user rejection."
+        "status": "Build passed; initial browser category limits and Marrom/M selection WhatsApp verified by lead. Updated captures conditionally reviewed; desktop product captured and inspected. Final cross-category runtime and final review pending."
       }
     }
   },
