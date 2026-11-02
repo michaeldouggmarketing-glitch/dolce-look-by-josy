@@ -6,3 +6,7 @@
 @media(prefers-reduced-motion:reduce){.fm-leaf{display:none}.fm-live-sheet{transform:none!important;transition:none}.fm-progress>span{transition:none}.fm-pager,.fm-drawer::backdrop{backdrop-filter:none}}
 
 .fm-toolbar{position:sticky;top:50px;z-index:18;background:#e9e6defa}.fm-book{scroll-margin-top:145px}@media(max-width:760px){.fm-toolbar{top:48px}.fm-book{scroll-margin-top:135px}}
+
+/* Service content grows with expanded answers; never clips the paper. */
+.fm-help-page{height:auto;min-height:720px}.fm-site{scrollbar-color:#9da492 #e9e6de}.fm-search input{caret-color:#46503e}.fm-page-position{font-variant-numeric:tabular-nums}
+@media(max-width:760px){.fm-help-page{min-height:0}}
