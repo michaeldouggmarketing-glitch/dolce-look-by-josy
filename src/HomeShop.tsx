@@ -1,6 +1,7 @@
 import {Fragment,type ReactNode} from 'react';
 import type {Look} from './inventory';
 import LookMedia from './LookMedia';
+import PaymentEditorial from './PaymentEditorial';
 import {EditorialIcon,HomeFaq,STORE_INSTAGRAM,contactLink} from './HomeEditorial';
 import {useEditorialRail} from './editorial-motion';
 const categories=[['Blusas',3],['Vestidos',7],['Camisas',2],['Conjuntos',6]] as const;
@@ -18,6 +19,7 @@ export default function HomeShop({looks,loading,error,renderCard}:{looks:Look[];
  {loading?<div className="shop-state" role="status">Carregando a coleção…</div>:error?<div className="shop-state" role="alert"><p>Não foi possível atualizar a coleção.</p><button onClick={()=>location.reload()}>Tentar novamente</button></div>:!looks.length?<div className="shop-state"><p>As próximas novidades estão chegando.</p><a href={contactLink()} target="_blank" rel="noreferrer">Fale com a equipe</a></div>:<div className="product-grid shop-product-grid" data-enter>{[...looks].sort((a,b)=>b.id-a.id).map((look,index)=>renderCard(look,index))}</div>}
  <a href="/colecao" className="shop-more">Ver toda a coleção <EditorialIcon/></a></section>
  <section className="shop-editorials" aria-label="Explore mais looks" data-enter="photo">{[['Camisas','Camisas do seu jeito.',camisa],['Vestidos','Um vestido. Muitas ocasiões.',vestido]].map(([name,title,look])=><a href={`/colecao?categoria=${name}`} key={name as string}><div><h2>{title as string}</h2><span>Ver coleção <EditorialIcon/></span></div>{look&&<LookMedia look={look as Look}/>}</a>)}</section>
+ <PaymentEditorial looks={looks}/>
  <section className="shop-instagram" data-enter><div className="shop-heading"><h2>Dolce Look no seu dia</h2><a href={STORE_INSTAGRAM} target="_blank" rel="noreferrer">@dolce_lookk <EditorialIcon name="instagram"/></a></div><div className="shop-insta-grid">{looks.slice(0,6).map(l=><a key={l.id} href={STORE_INSTAGRAM} target="_blank" rel="noreferrer" aria-label={`Ver inspirações no Instagram: ${l.name}`}><LookMedia look={l}/></a>)}</div></section>
  <section className="shop-news" id="contato" data-enter><div><h2>Fique por dentro das novidades</h2><p>Converse com a equipe e acompanhe as próximas peças da coleção.</p></div><a href={contactLink('Olá! Quero acompanhar as novidades da Dolce Look.')} target="_blank" rel="noreferrer">Quero receber novidades <EditorialIcon/></a></section><HomeFaq/>
  </div>;
