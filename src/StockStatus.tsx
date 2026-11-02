@@ -2,7 +2,7 @@ import {useCallback,useEffect,useRef,useState} from 'react';
 import {db} from './inventory';
 import {nextLabel,reviewLabel,stockSchedule} from './stock-schedule';
 import './stock-status.css';
-function useStockReview(){
+export function useStockReview(){
  const[reviewedAt,setReviewedAt]=useState<string|null>(null),[loading,setLoading]=useState(true),[error,setError]=useState(false),[now,setNow]=useState(Date.now()),[revision,setRevision]=useState(0);
  const clock=useRef<{epoch:number;tick:number}|null>(null),refresh=useCallback(()=>setRevision(r=>r+1),[]);
  useEffect(()=>{let alive=true,inFlight=false;
