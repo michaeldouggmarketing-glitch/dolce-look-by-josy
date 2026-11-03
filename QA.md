@@ -96,3 +96,13 @@ Payment final confirmation: independent finish reviewer ship for desktop payment
 - Evidence: .impeccable/review/facade-desktop.jpg, contact-desktop.jpg, facade-magazine.jpg, facade-mobile-final.jpg. Older facade-mobile.jpg is superseded. A preview-only iframe fixture was excluded from production tree.
 - Detector ran once: only advisory font sizes11/14/43px; incumbent/source typography and final screenshots reviewed. Independent finish reviewer: disposition ship, no material fixes. Scope does not claim full application, auth or stock mutation E2E.
 - Supabase advisors reported existing admin-check SECURITY DEFINER function and disabled leaked-password protection; no auth/policy changes made in this task.
+
+## 2026-11-03 — Admin stock action clarity and garment filtering
+- Actual collection UI extracted to AdminCollection with existing Admin edit/status/size callbacks unchanged. No authentication, schema, stock record, store version or public storefront changes.
+- Added six garment category choices, status tabs including drafts, combined size/search filtering, accent-insensitive name/category/reference retrieval, live result count and reset. Draft/hidden records open the editor before publication and expose no direct size mutation controls.
+- Filled per-size action explicitly says “Marcar P como vendido”; current availability is separate. Restoration, editing and whole-piece actions remain visually and verbally distinct.
+- Production TypeScript/Vite build passed; nine meaningful filter/non-mutation checks passed; diff whitespace clean.
+- Browser verification used the exact component in a preview-only fixture with clearly labelled nonpersistent test data. Combined Calças/P found one intended row; simulated size sale removed it from P results; reset worked; draft tab showed one record and no size action; mobile simulated size sale changed the button to Restaurar tamanho P. No real inventory writes occurred. This does not claim authenticated backend E2E.
+- Final desktop and actual390px iframe captures: admin-controls-desktop-final.jpg, admin-controls-mobile-final.jpg, admin-controls-mobile-actions-final.jpg in .impeccable/review/. Inner document clientWidth383/scrollWidth383. Fixed an observed inherited label margin before final captures. Preview-only fixture/routes excluded from production.
+- Detector ran once on changed targets; findings were advisory Admin palette/radius/type values against the public storefront sidecar, including incumbent values. Fresh independent finish review disposition SHIP, no material fixes.
+- Existing DESIGN.md/design.json stale-sidecar advisory was observed and left untouched, outside this narrow task.
