@@ -1,0 +1,58 @@
+{
+  "facade-day": {
+    "source": "User supplied Dolce Look Instagram screenshots 2026-11-03",
+    "edit": "crop only",
+    "dimensions": [
+      618,
+      482
+    ]
+  },
+  "facade-night": {
+    "source": "User supplied Dolce Look Instagram screenshots 2026-11-03",
+    "edit": "crop only",
+    "dimensions": [
+      720,
+      507
+    ]
+  },
+  "short-jeans": {
+    "source": "User supplied Dolce Look Instagram screenshots 2026-11-03",
+    "edit": "crop only",
+    "dimensions": [
+      720,
+      961
+    ]
+  },
+  "short-bege": {
+    "source": "User supplied Dolce Look Instagram screenshots 2026-11-03",
+    "edit": "crop only",
+    "dimensions": [
+      620,
+      898
+    ]
+  },
+  "calca-preta": {
+    "source": "User supplied Dolce Look Instagram screenshots 2026-11-03",
+    "edit": "crop only",
+    "dimensions": [
+      385,
+      720
+    ]
+  },
+  "calca-pantacourt": {
+    "source": "User supplied Dolce Look Instagram screenshots 2026-11-03",
+    "edit": "crop only",
+    "dimensions": [
+      720,
+      960
+    ]
+  },
+  "calca-clara": {
+    "source": "User supplied Dolce Look Instagram screenshots 2026-11-03",
+    "edit": "crop only",
+    "dimensions": [
+      720,
+      961
+    ]
+  }
+}

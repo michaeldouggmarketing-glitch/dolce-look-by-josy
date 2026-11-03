@@ -1,17 +1,19 @@
 import {Fragment,type ReactNode} from 'react';
+import StoreWelcome from './StoreWelcome';
+import {CATEGORIES,CATEGORY_IMAGES} from './categories';
 import type {Look} from './inventory';
 import LookMedia from './LookMedia';
 import PaymentEditorial from './PaymentEditorial';
 import {EditorialIcon,HomeFaq,STORE_INSTAGRAM,contactLink} from './HomeEditorial';
 import {useEditorialRail} from './editorial-motion';
-const categories=[['Blusas',3],['Vestidos',7],['Camisas',2],['Conjuntos',6]] as const;
+const categories=CATEGORIES.map(name=>[name,0] as const);
 export default function HomeShop({looks,loading,error,renderCard}:{looks:Look[];loading:boolean;error:boolean;renderCard:(look:Look,index:number,duplicate?:boolean)=>ReactNode}){
- const rail=useEditorialRail(4,.024);
+ const rail=useEditorialRail(categories.length,.024);
  const pick=(name:string,id:number)=>looks.find(l=>l.type===name&&l.id===id)||looks.find(l=>l.type===name);
  const camisa=pick('Camisas',2),conjunto=pick('Conjuntos',6),vestido=pick('Vestidos',7);
  return <div className="shop-home"><h1 className="sr-only">Dolce Look by Josy — Moda feminina e peças exclusivas</h1>
- <section className="shop-categories" id="categorias" aria-label="Escolha sua categoria">
-  <div className="shop-category-rail" ref={rail.rail} tabIndex={0} role="region" aria-label="Categorias; deslize para explorar" onKeyDown={rail.onKeyDown} data-enter="photo">{[0,1].map(copy=><Fragment key={copy}>{categories.map(([name,id])=>{const look=pick(name,id);return <a className="shop-category" key={name} href={`/colecao?categoria=${name}`} aria-hidden={copy>0||undefined} tabIndex={copy>0?-1:undefined}>{look?<LookMedia look={look} priority={copy===0}/>:<span className="shop-placeholder"/>}<span className="shop-category-name">{name}</span><span className="shop-category-link">Ver coleção <EditorialIcon/></span></a>})}</Fragment>)}</div>
+ <StoreWelcome/><section className="shop-categories" id="categorias" aria-label="Escolha sua categoria">
+  <div className="shop-category-rail" ref={rail.rail} tabIndex={0} role="region" aria-label="Categorias; deslize para explorar" onKeyDown={rail.onKeyDown} data-enter="photo">{[0,1].map(copy=><Fragment key={copy}>{categories.map(([name,id])=>{const look=pick(name,id);return <a className="shop-category" key={name} href={`/colecao?categoria=${name}`} aria-hidden={copy>0||undefined} tabIndex={copy>0?-1:undefined}>{look?<LookMedia look={look} priority={copy===0}/>:CATEGORY_IMAGES[name]?<img className="category-reference" src={CATEGORY_IMAGES[name]} alt={`Inspiração Dolce Look: ${name}`} loading="lazy"/>:<span className="shop-placeholder"/>}<span className="shop-category-name">{name}</span><span className="shop-category-link">{look?'Ver coleção':'Conferir novidades'} <EditorialIcon/></span></a>})}</Fragment>)}</div>
   <div className="shop-rail-tools"><span>Encontre seu próximo look</span><div><button onClick={()=>rail.move(-1)} aria-label="Categoria anterior" disabled={!rail.canMove}><EditorialIcon name="left"/></button><button onClick={()=>rail.move(1)} aria-label="Próxima categoria" disabled={!rail.canMove}><EditorialIcon name="right"/></button><button onClick={rail.toggle} className="ed-play-toggle" aria-label={`${rail.paused?'Retomar':'Pausar'} categorias`} aria-pressed={rail.paused} disabled={!rail.canMove||rail.reduced}><EditorialIcon name={rail.paused?'play':'pause'}/></button></div></div>
  </section>
  <section className="shop-campaign" aria-label="Coleção Dolce Look" data-enter="photo"><div className="shop-campaign-copy"><span>Dolce Look by Josy</span><h2>Seu estilo.<br/>Seu próximo look.</h2><p>Cuidando do seu look<br/>com bom gosto e estilo.</p><a href="/colecao">Conheça a coleção <EditorialIcon/></a></div><div className="shop-campaign-photo">{camisa&&<LookMedia look={camisa}/>}</div><div className="shop-campaign-photo secondary">{conjunto&&<LookMedia look={conjunto}/>}</div></section>
