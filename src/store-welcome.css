@@ -3,3 +3,5 @@
 @media(max-width:1150px){.site-shop .site-header>nav{gap:10px}.store-welcome-copy{padding:32px 9%}}
 @media(max-width:760px){.store-welcome{display:flex;flex-direction:column-reverse;margin-bottom:28px}.store-welcome-copy{padding:30px 24px;gap:18px}.store-welcome-copy h2{font-size:43px}.store-welcome-copy h2 br{display:none}.store-welcome-copy p{font-size:14px}.store-welcome-photo>img{aspect-ratio:1.24}.store-facade-options{bottom:12px;left:12px;right:12px}.store-facade-options button{padding:10px 14px}.site-shop .contact-team-only{padding:40px 24px}.fm-site .fm-facade-photo{height:auto;min-height:0}.fm-site .fm-facade-photo>img{height:auto;aspect-ratio:1.24;object-fit:contain}.fm-refined .fm-cover-refined{min-height:0}.fm-refined .fm-cover-copy{padding:28px 22px}}
 @media(prefers-reduced-motion:reduce){.store-welcome-photo>img{animation:none}}
+
+.store-welcome.store-welcome-day-only{display:block}.store-welcome-day-only .store-welcome-photo>img{aspect-ratio:auto;height:auto;object-fit:contain}
