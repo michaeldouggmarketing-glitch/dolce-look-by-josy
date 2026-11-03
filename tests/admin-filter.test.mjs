@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import ts from 'typescript';
+const code=ts.transpileModule(fs.readFileSync(new URL('../src/admin-filter.ts',import.meta.url),'utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const {filterStock}=await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));
+const rows=[{id:11,name:'Calça clara',type:'Calças',status:'available',size_stock:{P:true,M:false,G:false,GG:false}},{id:12,name:'Vestido longo',type:'Vestidos',status:'available',size_stock:{P:false,M:true,G:false,GG:false}},{id:13,name:'Short bege',type:'Shorts',status:'draft',size_stock:{P:false,M:false,G:false,GG:false}},{id:14,name:'Vestido azul',type:'Vestidos',status:'sold',size_stock:{P:false,M:false,G:false,GG:false}}];
+const base={tab:'available',category:'Todas',size:'Todos',query:''};
+const ids=f=>filterStock(rows,{...base,...f}).map(l=>l.id);
+assert.deepEqual(ids({category:'Vestidos',size:'M'}),[12]);
+assert.deepEqual(ids({category:'Vestidos',size:'P'}),[]);
+assert.deepEqual(ids({query:'calca'}),[11]);
+assert.deepEqual(ids({query:'12'}),[12]);
+assert.deepEqual(ids({tab:'sold',category:'Vestidos',size:'M'}),[14]);
+assert.deepEqual(ids({tab:'draft',category:'Shorts'}),[13]);
+assert.deepEqual(ids({tab:'all',category:'Shorts',size:'M'}),[]);
+assert.deepEqual(ids({tab:'all'}),[11,12,13,14]);
+assert.equal(rows[0].size_stock.P,true);
+console.log('9 combined category, status, size, accent, reference and non-mutation checks passed');
